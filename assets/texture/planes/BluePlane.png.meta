@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "381947b0-3873-43b2-a795-ef83fac3111f",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "BluePlane": {
+      "ver": "1.0.3",
+      "uuid": "a43f1cac-f20b-42bd-a3bc-003c6f004e79",
+      "rawTextureUuid": "381947b0-3873-43b2-a795-ef83fac3111f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -0.5,
+      "offsetY": 1.5,
+      "trimX": 10,
+      "trimY": 22,
+      "width": 107,
+      "height": 81,
+      "rawWidth": 128,
+      "rawHeight": 128,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

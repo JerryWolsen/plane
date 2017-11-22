@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "875e110b-a118-45f0-a183-a7379e737693",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "GodPlane": {
+      "ver": "1.0.3",
+      "uuid": "6dd67d8c-67fb-43b2-8f79-493457e1bbd2",
+      "rawTextureUuid": "875e110b-a118-45f0-a183-a7379e737693",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -1,
+      "offsetY": 4,
+      "trimX": 10,
+      "trimY": 6,
+      "width": 106,
+      "height": 108,
+      "rawWidth": 128,
+      "rawHeight": 128,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

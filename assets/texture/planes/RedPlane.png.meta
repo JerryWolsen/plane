@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "e1b4663b-d6da-4829-aedf-0ced79a0bf88",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "RedPlane": {
+      "ver": "1.0.3",
+      "uuid": "2d03e5f8-b5a7-4a6d-a0a4-877323c23c1d",
+      "rawTextureUuid": "e1b4663b-d6da-4829-aedf-0ced79a0bf88",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -1,
+      "offsetY": 6.5,
+      "trimX": 0,
+      "trimY": 8,
+      "width": 126,
+      "height": 99,
+      "rawWidth": 128,
+      "rawHeight": 128,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "6592849a-29b7-4e11-9038-36805a46d469",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "redfighter0005": {
+      "ver": "1.0.3",
+      "uuid": "acbbd9f5-c1d3-4ecd-8934-fecea22fb3ad",
+      "rawTextureUuid": "6592849a-29b7-4e11-9038-36805a46d469",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -13,
+      "trimX": 9,
+      "trimY": 37,
+      "width": 325,
+      "height": 335,
+      "rawWidth": 343,
+      "rawHeight": 383,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
