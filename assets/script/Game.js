@@ -3,16 +3,13 @@ cc.Class({
 
     properties: {
         scoreDisplay: cc.Label,
-        level: 0,
         enemy: cc.Prefab,
         plane: cc.Prefab,
+        boom: cc.Prefab,
     },
 
     onLoad: function () {
         this.score = 0;
-
-        let manager = cc.director.getCollisionManager();
-        manager.enabled = true;
 
         this.spawnNewPlane();
 
@@ -56,6 +53,17 @@ cc.Class({
 
     gameOver: function(){
         cc.director.loadScene('menu');
+    },
+
+    fireBoom: function(posX, posY){
+        let newBoom = cc.instantiate(this.boom);
+
+        newBoom.x = posX;
+        newBoom.y = posY;
+
+        this.node.addChild(newBoom);
+
+        newBoom.getComponent(cc.Animation).play('boom');
     },
 
 });

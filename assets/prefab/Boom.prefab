@@ -10,7 +10,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Enemy",
+    "_name": "Boom",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
@@ -47,13 +47,13 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 325,
-      "height": 335
+      "width": 128,
+      "height": 128
     },
     "_rotationX": 0,
     "_rotationY": 0,
-    "_scaleX": 0.5,
-    "_scaleY": 0.5,
+    "_scaleX": 1,
+    "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -64,7 +64,7 @@
     "_localZOrder": 0,
     "_globalZOrder": 0,
     "_opacityModifyRGB": false,
-    "groupIndex": 3
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Sprite",
@@ -75,10 +75,10 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "acbbd9f5-c1d3-4ecd-8934-fecea22fb3ad"
+      "__uuid__": "3a7d3b2f-a1a5-4d09-92b7-a129a52414b3"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -90,99 +90,36 @@
     "_isTrimmedMode": true,
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_atlas": null
+    "_atlas": {
+      "__uuid__": "4ac9508e-0dfd-4d70-b233-a734f7654de9"
+    }
   },
   {
-    "__type__": "cc.PolygonCollider",
+    "__type__": "cc.Animation",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 1
     },
     "_enabled": true,
-    "tag": 0,
-    "_offset": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "points": [
+    "_defaultClip": null,
+    "_clips": [
       {
-        "__type__": "cc.Vec2",
-        "x": -125.3,
-        "y": -152.4
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 129.8,
-        "y": -152.1
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 140.3,
-        "y": -76.3
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 161.5,
-        "y": -75.4
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 162.8,
-        "y": 28.7
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 51.3,
-        "y": 51.9
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 51.3,
-        "y": 166.7
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": -51.3,
-        "y": 168
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": -58.7,
-        "y": 50.4
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": -162.1,
-        "y": 26.5
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": -162.5,
-        "y": -73.1
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": -139,
-        "y": -75.5
+        "__uuid__": "83bd902d-a6a6-44b5-9940-208e74ab7cf1"
       }
-    ]
+    ],
+    "playOnLoad": false
   },
   {
-    "__type__": "e5c29reaXBLUYauynoPnjVE",
+    "__type__": "45ccbTucV5Mn5rTMdbCxR2q",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 1
     },
     "_enabled": true,
-    "hp": 100,
-    "bullet": {
-      "__uuid__": "8dc12155-00b1-46eb-9128-f7c64e5aa6a5"
-    },
-    "hpBar": {
-      "__uuid__": "5079b3a1-b8ab-45f0-9e5d-18cb6bbcbd7d"
+    "boomAudio": {
+      "__uuid__": "b22d076b-4fae-4633-83dc-796b94c6d696"
     }
   },
   {
@@ -191,9 +128,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "cdcc4141-3423-4728-8351-8540dae1361b"
+      "__uuid__": "7e5f6d3a-39cd-4415-bded-76b5ec60c3b6"
     },
-    "fileId": "11oMpV8VlB5oCQGD10MBW7",
+    "fileId": "b8BCaMAb1GC5eSXvKLI60l",
     "sync": false
   }
 ]

@@ -3,46 +3,16 @@ cc.Class({
 
     properties: {
         hp: 0,
+        fireGap: 0.1,
         bullet: cc.Prefab,
         hpBar: cc.Prefab,
     },
 
-    addTouchListener: function(){
-        let self = this;
-        this.touch_flag = false;
-
-        this.node.on(cc.Node.EventType.TOUCH_START, function(event){
-            this.touch_flag = true;
-        });
-
-        this.node.on(cc.Node.EventType.TOUCH_MOVE, function(event){
-            if(this.touch_flag){
-                let delta = event.getDelta();
-                
-                self.node.x += delta.x;
-                self.node.y += delta.y;
-            }
-        
-        });
-
-        this.node.on(cc.Node.EventType.TOUCH_END, function(event){
-            this.touch_flag = false;
-        });
-
-        this.node.on(cc.Node.EventType.TOUCH_CANCEL, function(event){
-            this.touch_flag = false;
-        });
-    },
-
     onLoad: function () {
-
-        this.addTouchListener();
-
-        this.fire_gap = 0.1;
 
         this.schedule(function(){
             this.fireBullet();
-        }, this.fire_gap);
+        }, this.fireGap);
         
         let hp_bar = cc.instantiate(this.hpBar);
 

@@ -57,7 +57,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -350
+      "y": 0
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -100,7 +100,8 @@
       "__id__": 1
     },
     "_enabled": true,
-    "hp": 20,
+    "hp": 10,
+    "fireGap": 0.1,
     "bullet": {
       "__uuid__": "07529579-8904-4047-ab66-125883e74ada"
     },

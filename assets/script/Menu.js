@@ -6,7 +6,7 @@ cc.Class({
     },
 
     onLoad: function () {
-
+        cc.director.preloadScene('game');
     },
 
     playGame: function(){
