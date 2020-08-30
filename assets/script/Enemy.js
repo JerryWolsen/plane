@@ -4,10 +4,11 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        hp: 0, 
+        hp: 0,
         fireGap: 2,
         bullet: cc.Prefab,
         hpBar: cc.Prefab,
+        score: 10,
     },
 
     onLoad: function () {
@@ -20,7 +21,7 @@ cc.Class({
         }, this.fireGap);
 
         let hp_bar = cc.instantiate(this.hpBar);
-        
+
         this.node.addChild(hp_bar);
         hp_bar.setPosition(0, -this.node.height / 2 - 30);
         let hpComp = hp_bar.getComponent('HP');
@@ -37,7 +38,7 @@ cc.Class({
             newBullet.getComponent('EnemyBullet').dirX = 60 * (i - 3);
 
             newBullet.setPosition(this.setBulletPos(i));
-    
+
             this.node.parent.addChild(newBullet);
         }
     },
@@ -67,8 +68,8 @@ cc.Class({
 
             this.node.destroy();
 
-            this.game.gainScore();
-            
+            this.game.gainScore(this.score);
+
             this.game.spawnNewEnemy();
 
         }

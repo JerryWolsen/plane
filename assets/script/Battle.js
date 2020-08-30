@@ -1,3 +1,4 @@
+var Global = require('Global');
 
 module.exports = cc.Class({
     extends: cc.Component,
@@ -8,11 +9,17 @@ module.exports = cc.Class({
         enemyPrefab: cc.Prefab,
         boomPrefab: cc.Prefab,
         backgroundPrefab: cc.Prefab,
+        smallEnemyPrefab: cc.Prefab,
         battleBgm: cc.AudioClip,
         ui: require('UI'),
+        levels: [cc.Integer],
+        bosses:[cc.Integer],
     }),
 
     onLoad: function () {
+        this.hasWin = false;
+        this.startToMeetBoss = false;
+        this.numberOfDestroyBoss = 0;
 
         let self = this;
         cc.director.getCollisionManager().enabled = true;
@@ -27,7 +34,15 @@ module.exports = cc.Class({
         this.spawnNewPlane();
         this.addTouchListener();
 
-        this.spawnNewEnemy();
+        // this.spawnNewEnemy();
+
+        this.spawnSmallEnemy();
+
+        this.schedule(this.spawnSmallEnemy, 1.5);
+    },
+
+    start(){
+        this.currentLevel = Global.currentLevel;
     },
 
     addBackground: function(){
@@ -54,6 +69,8 @@ module.exports = cc.Class({
     },
 
     spawnNewEnemy: function(){
+        if(this.hasWin) return;
+
         let self = this;
         let enemy = cc.instantiate(this.enemyPrefab);
 
@@ -71,6 +88,19 @@ module.exports = cc.Class({
         enemy.runAction(enterAction);
     },
 
+    spawnSmallEnemy: function(){
+        let count = Math.floor(cc.random0To1() * 10) + 1;
+        for(let i=0; i<count; i++){
+            let self = this;
+            let enemy = cc.instantiate(this.smallEnemyPrefab);
+            let posX = Math.floor(cc.randomMinus1To1() * (self.node.width / 2 - enemy.width / 2));
+            let posY = Math.floor(cc.randomMinus1To1() * enemy.height / 2 + self.node.height / 2 + enemy.height / 2);
+            this.node.addChild(enemy);
+            enemy.setPosition(cc.p(posX, posY));
+            enemy.getComponent('SmallEnemy').game = this;
+        }
+    },
+
     _touchStartFunc: function(event){
         this.touch_flag = true;
     },
@@ -79,7 +109,7 @@ module.exports = cc.Class({
         let self = this;
         if(self.touch_flag && self.plane){
             let delta = event.getDelta();
-            
+
             self.plane.x += delta.x;
             self.plane.y += delta.y;
 
@@ -130,9 +160,9 @@ module.exports = cc.Class({
     },
 
     removeTouchListener: function(){
-        
+
         this.node.off(cc.Node.EventType.TOUCH_START, this._touchStartFunc, this);
-        
+
         this.node.off(cc.Node.EventType.TOUCH_MOVE, this._touchMoveFunc, this);
 
         this.node.off(cc.Node.EventType.TOUCH_END, this._touchEndFunc, this);
@@ -140,19 +170,33 @@ module.exports = cc.Class({
         this.node.off(cc.Node.EventType.TOUCH_CANCEL, this._touchCancelFunc, this);
     },
 
-    gainScore: function(){
-        this.score += 1;
+    gainScore: function(score){
+        this.score += score;
         this.ui.scoreDisplay.string  = 'Score: ' + this.score.toString();
+        if(score > 1){
+            this.numberOfDestroyBoss++;
+        }
     },
 
     gameOver: function(){
         this.removeTouchListener();
+        this.unschedule(this.spawnSmallEnemy);
+        this.startToMeetBoss = false;
+
         this.ui.mask.node.active = true;
         this.ui.mask.status.string = 'You Lose';
         this.ui.mask.resumeBtn.node.active = false;
         cc.audioEngine.stop(this.currentBgm);
         cc.director.pause();
+    },
 
+    gotoWinResult: function(){
+        this.removeTouchListener();
+        this.unschedule(this.spawnSmallEnemy);
+        this.startToMeetBoss = false;
+        cc.audioEngine.stop(this.currentBgm);
+
+        cc.director.loadScene('win');
     },
 
     fireBoom: function(posX, posY){
@@ -165,7 +209,15 @@ module.exports = cc.Class({
         boom.getComponent(cc.Animation).play('boom');
     },
 
-    // update: function (dt) {
-
-    // },
+    update: function (dt) {
+        if(!this.hasWin && !this.startToMeetBoss && this.score >= this.levels[this.currentLevel]){
+            this.startToMeetBoss = true;
+            this.unschedule(this.spawnSmallEnemy);
+            this.spawnNewEnemy();
+        }
+        if(!this.hasWin && this.startToMeetBoss && this.numberOfDestroyBoss == this.bosses[this.currentLevel]){
+            this.hasWin = true;
+            this.gotoWinResult();
+        }
+    },
 });

@@ -6,6 +6,7 @@ cc.Class({
         fireGap: 0.1,
         bullet: cc.Prefab,
         hpBar: cc.Prefab,
+        bulletNum: 1,
     },
 
     onLoad: function () {
@@ -13,7 +14,7 @@ cc.Class({
         this.schedule(function(){
             this.fireBullet();
         }, this.fireGap);
-        
+
         let hp_bar = cc.instantiate(this.hpBar);
 
         this.node.addChild(hp_bar);
@@ -26,17 +27,21 @@ cc.Class({
     },
 
     fireBullet: function(){
-        for(let i = 0; i < 5; i++){
+        for(let i = 0; i < this.bulletNum; i++){
             let newBullet = cc.instantiate(this.bullet);
             newBullet.setPosition(this.setBulletPos(i));
-    
+
             this.node.parent.addChild(newBullet);
         }
     },
 
     setBulletPos: function(i){
-
-        let posX = this.node.x + 15 * (i - 2);
+        let posX = this.node.x;
+        if(this.bulletNum == 2){
+            let index = i==0 ? -1 : 1;
+            let offset = i==0 ? 15 : -15
+            posX = this.node.x + this.node.width/2*index + offset;
+        }
         let posY = this.node.y + 40;
         return cc.p(posX, posY);
     },
