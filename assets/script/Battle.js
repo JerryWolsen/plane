@@ -8,6 +8,8 @@ module.exports = cc.Class({
         planePrefab: cc.Prefab,
         enemyPrefab: cc.Prefab,
         boomPrefab: cc.Prefab,
+        smallBoom1Prefab: cc.Prefab,
+        smallBoom2Prefab: cc.Prefab,
         backgroundPrefab: cc.Prefab,
         smallEnemyPrefab: cc.Prefab,
         battleBgm: cc.AudioClip,
@@ -119,12 +121,12 @@ module.exports = cc.Class({
             let planeWidth = self.plane.width;
             let planeHeight = self.plane.height;
 
-            if(self.plane.x >= canvasWidth / 2 - planeWidth){
-                self.plane.x = canvasWidth / 2 - planeWidth;
+            if(self.plane.x >= canvasWidth / 2 - planeWidth/2){
+                self.plane.x = canvasWidth / 2 - planeWidth/2;
             }
 
-            if(self.plane.x <= -canvasWidth / 2 + planeWidth){
-                self.plane.x = -canvasWidth / 2 + planeWidth;
+            if(self.plane.x <= -canvasWidth / 2 + planeWidth/2){
+                self.plane.x = -canvasWidth / 2 + planeWidth/2;
             }
 
             // 血条多了30
@@ -207,6 +209,17 @@ module.exports = cc.Class({
 
         this.node.addChild(boom);
         boom.getComponent(cc.Animation).play('boom');
+    },
+
+    fireSmallBoom: function(index, posX, posY){
+        let prefab = index==0 ? this.smallBoom1Prefab : this.smallBoom2Prefab;
+        let boom = cc.instantiate(prefab);
+
+        boom.x = posX;
+        boom.y = posY;
+
+        this.node.addChild(boom);
+        boom.getComponent(cc.Animation).play();
     },
 
     update: function (dt) {

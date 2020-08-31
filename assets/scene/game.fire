@@ -175,6 +175,12 @@
     "boomPrefab": {
       "__uuid__": "7e5f6d3a-39cd-4415-bded-76b5ec60c3b6"
     },
+    "smallBoom1Prefab": {
+      "__uuid__": "9f614e3d-b626-45e2-bc60-7702aee88360"
+    },
+    "smallBoom2Prefab": {
+      "__uuid__": "47f2c328-d5e1-46c2-b2b1-304314548d1a"
+    },
     "backgroundPrefab": {
       "__uuid__": "134990fb-cc69-4e6d-b13f-906a34b6b186"
     },
