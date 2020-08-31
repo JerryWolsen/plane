@@ -103,7 +103,7 @@
     },
     "_enabled": true,
     "hp": 1,
-    "speed": 160,
+    "speed": 200,
     "score": 1,
     "plane1": {
       "__uuid__": "8be72351-a935-48ea-a241-0ec37063e3d0"

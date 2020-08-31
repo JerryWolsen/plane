@@ -12,6 +12,8 @@ module.exports = cc.Class({
         smallBoom2Prefab: cc.Prefab,
         backgroundPrefab: cc.Prefab,
         smallEnemyPrefab: cc.Prefab,
+        ufoBulletPrefab: cc.Prefab,
+        ufoBombPrefab: cc.Prefab,
         battleBgm: cc.AudioClip,
         ui: require('UI'),
         levels: [cc.Integer],
@@ -41,6 +43,8 @@ module.exports = cc.Class({
         this.spawnSmallEnemy();
 
         this.schedule(this.spawnSmallEnemy, 1.5);
+
+        this.schedule(this.spawnUfo, 10);
     },
 
     start(){
@@ -101,6 +105,17 @@ module.exports = cc.Class({
             enemy.setPosition(cc.p(posX, posY));
             enemy.getComponent('SmallEnemy').game = this;
         }
+    },
+
+    spawnUfo: function(){
+        let self = this;
+        let rand = cc.random0To1();
+        let ufo = rand <= 0.7 ? cc.instantiate(this.ufoBulletPrefab) : cc.instantiate(this.ufoBombPrefab);
+        let posX = Math.floor(cc.randomMinus1To1() * (self.node.width / 2 - ufo.width / 2));
+        let posY = Math.floor(self.node.height / 2 + ufo.height / 2);
+        this.node.addChild(ufo);
+        ufo.setPosition(cc.p(posX, posY));
+        ufo.getComponent('Ufo').game = this;
     },
 
     _touchStartFunc: function(event){
@@ -180,9 +195,12 @@ module.exports = cc.Class({
         }
     },
 
+    updateBoomNum: function(){},
+
     gameOver: function(){
         this.removeTouchListener();
         this.unschedule(this.spawnSmallEnemy);
+        this.unschedule(this.spawnUfo);
         this.startToMeetBoss = false;
 
         this.ui.mask.node.active = true;
@@ -195,6 +213,7 @@ module.exports = cc.Class({
     gotoWinResult: function(){
         this.removeTouchListener();
         this.unschedule(this.spawnSmallEnemy);
+        this.unschedule(this.spawnUfo);
         this.startToMeetBoss = false;
         cc.audioEngine.stop(this.currentBgm);
 
@@ -226,6 +245,7 @@ module.exports = cc.Class({
         if(!this.hasWin && !this.startToMeetBoss && this.score >= this.levels[this.currentLevel]){
             this.startToMeetBoss = true;
             this.unschedule(this.spawnSmallEnemy);
+            this.unschedule(this.spawnUfo);
             this.spawnNewEnemy();
         }
         if(!this.hasWin && this.startToMeetBoss && this.numberOfDestroyBoss == this.bosses[this.currentLevel]){

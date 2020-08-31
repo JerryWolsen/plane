@@ -1,4 +1,11 @@
 {
+  "cocos-analytics": {
+    "appID": "13798",
+    "appSecret": "959b3ac0037d0f3c2fdce94f8421a9b2",
+    "channel": "",
+    "enable": false,
+    "version": ""
+  },
   "collision-matrix": [
     [
       false,
@@ -11,6 +18,7 @@
       false,
       false,
       false,
+      true,
       true,
       true
     ],
@@ -34,6 +42,14 @@
       false,
       false,
       false
+    ],
+    [
+      false,
+      true,
+      false,
+      false,
+      false,
+      false
     ]
   ],
   "design-resolution-height": 640,
@@ -46,7 +62,8 @@
     "plane",
     "bullet",
     "enemy",
-    "enemy-bullet"
+    "enemy-bullet",
+    "ufo"
   ],
   "simulator-orientation": false,
   "simulator-resolution": {
@@ -55,10 +72,5 @@
   },
   "start-scene": "028720d0-af65-4031-8197-703f7e7abab9",
   "use-customize-simulator": false,
-  "use-project-simulator-setting": false,
-  "cocos-analytics": {
-    "enable": false,
-    "appID": "13798",
-    "appSecret": "959b3ac0037d0f3c2fdce94f8421a9b2"
-  }
+  "use-project-simulator-setting": false
 }

@@ -101,13 +101,14 @@
     },
     "_enabled": true,
     "hp": 10,
-    "fireGap": 0.1,
+    "fireGap": 0.3,
     "bullet": {
       "__uuid__": "07529579-8904-4047-ab66-125883e74ada"
     },
     "hpBar": {
       "__uuid__": "5079b3a1-b8ab-45f0-9e5d-18cb6bbcbd7d"
-    }
+    },
+    "bulletNum": 1
   },
   {
     "__type__": "cc.BoxCollider",

@@ -10,7 +10,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "bullet_2_blue",
+    "_name": "ufoBullet",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
@@ -47,8 +47,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 10,
-      "height": 26
+      "width": 58,
+      "height": 88
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -64,7 +64,7 @@
     "_localZOrder": 0,
     "_globalZOrder": 0,
     "_opacityModifyRGB": false,
-    "groupIndex": 2
+    "groupIndex": 5
   },
   {
     "__type__": "cc.Sprite",
@@ -75,7 +75,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "fd0dc1e6-58f7-4447-a741-7b0347c52c3a"
+      "__uuid__": "ff1e34aa-ea36-4ae1-9a24-8d97948fd154"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -90,20 +90,12 @@
     "_isTrimmedMode": true,
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_atlas": null
+    "_atlas": {
+      "__uuid__": "ef9ec7ef-a27a-4038-bd22-d80cefea7e34"
+    }
   },
   {
-    "__type__": "b15415MR4FKxYpfchKaZo2a",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "speed": 600
-  },
-  {
-    "__type__": "cc.BoxCollider",
+    "__type__": "cc.PolygonCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -116,11 +108,39 @@
       "x": 0,
       "y": 0
     },
-    "_size": {
-      "__type__": "cc.Size",
-      "width": 10,
-      "height": 26
-    }
+    "points": [
+      {
+        "__type__": "cc.Vec2",
+        "x": -50,
+        "y": -50
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 50,
+        "y": -50
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -50,
+        "y": 50
+      }
+    ]
+  },
+  {
+    "__type__": "ea7c2IFoA9HCKYQ7MOuisIP",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "speed": 200,
+    "ufoType": "ufoBullet"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -128,9 +148,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "07529579-8904-4047-ab66-125883e74ada"
+      "__uuid__": "645883b5-1bab-476e-99c5-6a263fa13f70"
     },
-    "fileId": "6cnNm9avBESYwvzd2kBb/m",
+    "fileId": "a2xSUsw3VCB6sT6qE/vPt9",
     "sync": false
   }
 ]
