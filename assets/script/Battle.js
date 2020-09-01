@@ -16,6 +16,7 @@ module.exports = cc.Class({
         ufoBombPrefab: cc.Prefab,
         battleBgm: cc.AudioClip,
         ui: require('UI'),
+        useBombButton: cc.Button,
         levels: [cc.Integer],
         bosses:[cc.Integer],
     }),
@@ -44,11 +45,12 @@ module.exports = cc.Class({
 
         this.schedule(this.spawnSmallEnemy, 1.5);
 
-        this.schedule(this.spawnUfo, 10);
+        this.schedule(this.spawnUfo, 2);
     },
 
     start(){
         this.currentLevel = Global.currentLevel;
+        this.updateBoomNum();
     },
 
     addBackground: function(){
@@ -195,7 +197,35 @@ module.exports = cc.Class({
         }
     },
 
-    updateBoomNum: function(){},
+    updateBoomNum: function(){
+        this.ui.boomLabel.string = 'x ' + Global.boomNum.toString();
+    },
+
+    useUfoBomb: function(){
+        if(Global.boomNum <= 0){
+            return;
+        }
+        this.useBombButton.interactable = false;
+        this.scheduleOnce(()=>{
+            this.useBombButton.interactable = true;
+        }, 1);
+        Global.boomNum--;
+        if(Global.boomNum <= 0){
+            Global.boomNum = 0;
+        }
+        this.updateBoomNum();
+        //TODO: 添加大爆炸
+        let children = this.node.children;
+        let score = 0;
+        for(let i=0; i<children.length; i++){
+            if (children[i].name == 'smallEnemy'){
+                children[i].getComponent('SmallEnemy').hp--;
+            }else if(children[i].name == 'Enemy'){
+                let enemy = children[i].getComponent('Enemy');
+                enemy.hp = enemy.hp - 10;
+            }
+        }
+    },
 
     gameOver: function(){
         this.removeTouchListener();

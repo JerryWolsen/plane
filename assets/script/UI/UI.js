@@ -1,4 +1,6 @@
 
+var Global = require('Global');
+
 module.exports = cc.Class({
     extends: cc.Component,
 
@@ -8,14 +10,15 @@ module.exports = cc.Class({
         battle: require('Battle'),
         scoreDisplay: cc.Label,
         mask: require('Mask'),
+        boomLabel: cc.Label,
     }),
 
     pauseGame: function(){
 
         this.mask.node.active = true;
-        cc.audioEngine.pause(this.battle.currentBgm); 
+        cc.audioEngine.pause(this.battle.currentBgm);
         cc.director.pause();
-        
+
     },
 
     cancelGame: function(){

@@ -19,7 +19,7 @@ cc.Class({
           '第二关',
           '第三关',
         ];
-        this.levelLabel.text = levels[Global.currentLevel];
+        this.levelLabel.string = levels[Global.currentLevel];
         if(Global.currentLevel == 2){
             this.allPassLabel.active = true;
             this.homeButton.node.x = 0;
