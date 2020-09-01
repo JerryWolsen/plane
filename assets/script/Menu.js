@@ -7,7 +7,6 @@ cc.Class({
     },
 
     onLoad: function () {
-        cc.director.preloadScene('game');
         this.addBackground();
     },
 
@@ -21,7 +20,7 @@ cc.Class({
     },
 
     playGame: function(){
-        cc.director.loadScene('game');
+        cc.director.loadScene('PlaneReady');
     },
 
     update: function (dt) {
