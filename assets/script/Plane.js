@@ -41,7 +41,7 @@ cc.Class({
         let posX = this.node.x;
         if(this.bulletNum == 2){
             let index = i==0 ? -1 : 1;
-            let offset = i==0 ? 15 : -15
+            let offset = i==0 ? 15 : -15;
             posX = this.node.x + this.node.width/2*index + offset;
         }
         let posY = this.node.y + 40;

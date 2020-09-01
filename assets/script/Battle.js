@@ -45,7 +45,7 @@ module.exports = cc.Class({
 
         this.schedule(this.spawnSmallEnemy, 1.5);
 
-        this.schedule(this.spawnUfo, 2);
+        this.schedule(this.spawnUfo, 10);
     },
 
     start(){
