@@ -100,8 +100,8 @@
       "__id__": 1
     },
     "_enabled": true,
-    "speed": 200,
-    "dirX": 0
+    "speed": 260,
+    "dirX": 10
   },
   {
     "__type__": "cc.CircleCollider",
