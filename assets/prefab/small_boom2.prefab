@@ -10,7 +10,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "enemy2_down1",
+    "_name": "small_boom2",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],

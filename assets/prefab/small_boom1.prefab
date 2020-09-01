@@ -105,7 +105,11 @@
     "_defaultClip": {
       "__uuid__": "2c223a9b-eb1e-4728-a852-940f166dfaa0"
     },
-    "_clips": [],
+    "_clips": [
+      {
+        "__uuid__": "2c223a9b-eb1e-4728-a852-940f166dfaa0"
+      }
+    ],
     "playOnLoad": false
   },
   {

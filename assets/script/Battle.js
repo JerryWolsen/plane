@@ -238,7 +238,7 @@ module.exports = cc.Class({
         boom.y = posY;
 
         this.node.addChild(boom);
-        boom.getComponent(cc.Animation).play();
+        boom.getComponent(cc.Animation).play('smallBoom'+(index+1));
     },
 
     update: function (dt) {
