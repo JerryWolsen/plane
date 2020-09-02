@@ -1,4 +1,6 @@
 import name from '../util/index'
+var Global = require('Global');
+
 cc.Class({
     extends: cc.Component,
 
@@ -18,13 +20,14 @@ cc.Class({
             default: null,
             type: cc.Sprite
         },
-        bgNode: cc.Node,
-        backgroundPrefab: cc.Prefab,
+        innerCycles: [cc.Node],
+        outerCycles: [cc.Node],
+        locks: [cc.Node],
     },
-
 
     onLoad() {
         cc.director.preloadScene('game');
+        this.selectedLevel = 0;
         //plane1监听
         this.plane1.node.on('click', (event) => {
             const index = window.PLAYER_1
@@ -37,12 +40,17 @@ cc.Class({
             this.selectPlane(index)
             this.setSelectWrapper(index)
         })
-        this.addBackground()
     },
 
     start() {
-
+        for(let i=0; i<this.locks.length; i++){
+            this.locks[i].active = (i!=Global.currentLevel);
+            this.innerCycles[i].active = (i==Global.currentLevel);
+            this.outerCycles[i].active = (i==Global.currentLevel);
+        }
+        this.runCycleAction();
     },
+
     //设置选择框的位置
     setSelectWrapper(index) {
         switch (index) {
@@ -57,7 +65,6 @@ cc.Class({
                 this.selectWrapper.node.x = -100
                 break;
         }
-        cc.director.loadScene('game')
     },
     selectPlane(index) {
         switch (index) {
@@ -73,17 +80,51 @@ cc.Class({
         }
     },
 
-    addBackground: function(){
-
-        let background = cc.instantiate(this.backgroundPrefab);
-        background.getComponent('Background').scene = 'start';
-        background.height = this.bgNode.height;
-        background.width = this.bgNode.width;
-        this.bgNode.addChild(background);
+    backButtonClicked(){
+        cc.director.loadScene('menu')
     },
 
+    nextButtonClicked(){
+        if(!Global.levels[this.selectedLevel]){
+            return;
+        }
+        Global.enterLevel = this.selectedLevel;
+        cc.director.loadScene('game');
+    },
 
+    start1ButtonClicked(){
+        this.updateSelectedLevel(1);
+    },
 
+    start2ButtonClicked(){
+        this.updateSelectedLevel(0);
+    },
+
+    start3ButtonClicked(){
+        this.updateSelectedLevel(2);
+    },
+
+    updateSelectedLevel(index){
+        this.selectedLevel = index;
+        for(let i=0; i<this.innerCycles.length; i++){
+            let active = (i==index);
+            this.innerCycles[i].active = active;
+            this.outerCycles[i].active = active;
+            if(!active){
+                this.innerCycles[i].stopAction();
+                this.outerCycles[i].stopAction();
+            }else{
+                this.runCycleAction();
+            }
+        }
+    },
+
+    runCycleAction(){
+        let action1 = cc.rotateBy(4, 360);
+        let action2 = cc.rotateBy(4, -360);
+        this.innerCycles[this.selectedLevel].runAction(action1.repeatForever());
+        this.outerCycles[this.selectedLevel].runAction(action2.repeatForever());
+    },
 
     // update (dt) {},
 });
