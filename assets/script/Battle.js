@@ -49,7 +49,7 @@ module.exports = cc.Class({
     },
 
     start(){
-        this.currentLevel = Global.currentLevel;
+        this.currentLevel = Global.enterLevel;
         this.updateBoomNum();
     },
 

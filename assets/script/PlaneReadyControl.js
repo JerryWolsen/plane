@@ -44,7 +44,7 @@ cc.Class({
 
     start() {
         for(let i=0; i<this.locks.length; i++){
-            this.locks[i].active = (i!=Global.currentLevel);
+            this.locks[i].active = (i>Global.currentLevel);
             this.innerCycles[i].active = (i==Global.currentLevel);
             this.outerCycles[i].active = (i==Global.currentLevel);
         }

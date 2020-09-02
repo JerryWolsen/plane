@@ -7,13 +7,9 @@ cc.Class({
         bg1: cc.Sprite,
         bg2: cc.Sprite,
         bg3: cc.Sprite,
-        huoShanBg: cc.SpriteFrame,
-        lvZhouBg: cc.SpriteFrame,
-        shaMoBg: cc.SpriteFrame,
-        shanChuanBg: cc.SpriteFrame,
-        xingKongBg: cc.SpriteFrame,
-        yunDuanBg: cc.SpriteFrame,
-        scene: ''
+        background1: cc.SpriteFrame,
+        background2: cc.SpriteFrame,
+        background3: cc.SpriteFrame,
     },
 
     onLoad: function () {
@@ -26,21 +22,17 @@ cc.Class({
 
     start: function(){
         console.log('start: '+this.scene);
-        let bg = this.huoShanBg;
-        if(this.scene == 'start'){
-            bg = this.xingKongBg;
-        }else{
-            switch (Global.currentLevel) {
-                case 0:
-                    bg = this.huoShanBg;
-                    break;
-                case 1:
-                    bg = this.lvZhouBg;
-                    break;
-                case 2:
-                    bg = this.shaMoBg;
-                    break;
-            }
+        let bg = this.background1;
+        switch (Global.enterLevel) {
+            case 0:
+                bg = this.background1;
+                break;
+            case 1:
+                bg = this.background2;
+                break;
+            case 2:
+                bg = this.background3;
+                break;
         }
         this.bg1.spriteFrame = bg;
         this.bg2.spriteFrame = bg;

@@ -133,7 +133,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "df957160-612a-4aed-b98b-15b211a1a943"
+      "__uuid__": "36ec8164-c003-4ed3-a21a-771587bee95e"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -148,7 +148,9 @@
     "_isTrimmedMode": true,
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_atlas": null
+    "_atlas": {
+      "__uuid__": "c7913833-009e-4f36-81be-6b6a530b6f40"
+    }
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -224,7 +226,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "df957160-612a-4aed-b98b-15b211a1a943"
+      "__uuid__": "36ec8164-c003-4ed3-a21a-771587bee95e"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -239,7 +241,9 @@
     "_isTrimmedMode": true,
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_atlas": null
+    "_atlas": {
+      "__uuid__": "c7913833-009e-4f36-81be-6b6a530b6f40"
+    }
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -315,7 +319,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "df957160-612a-4aed-b98b-15b211a1a943"
+      "__uuid__": "36ec8164-c003-4ed3-a21a-771587bee95e"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -330,7 +334,9 @@
     "_isTrimmedMode": true,
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_atlas": null
+    "_atlas": {
+      "__uuid__": "c7913833-009e-4f36-81be-6b6a530b6f40"
+    }
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -361,25 +367,15 @@
     "bg3": {
       "__id__": 9
     },
-    "huoShanBg": {
-      "__uuid__": "df957160-612a-4aed-b98b-15b211a1a943"
+    "background1": {
+      "__uuid__": "36ec8164-c003-4ed3-a21a-771587bee95e"
     },
-    "lvZhouBg": {
-      "__uuid__": "107284c3-35c6-45db-9c53-9816b189f7cf"
+    "background2": {
+      "__uuid__": "873073ae-9591-4b94-a252-c5e267349c48"
     },
-    "shaMoBg": {
-      "__uuid__": "1d36994c-4a70-4794-8bb6-88eff5423dd5"
-    },
-    "shanChuanBg": {
-      "__uuid__": "0714498b-9b86-4ff5-ae4b-1ec3e945897d"
-    },
-    "xingKongBg": {
-      "__uuid__": "ad966ef3-03a5-4f90-80e1-43828315c71d"
-    },
-    "yunDuanBg": {
-      "__uuid__": "852f97f5-154a-49c1-875e-ddef04f254d0"
-    },
-    "scene": ""
+    "background3": {
+      "__uuid__": "426460a9-b7b3-4493-ba2e-4d6a1529fdf6"
+    }
   },
   {
     "__type__": "cc.PrefabInfo",

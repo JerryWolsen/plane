@@ -19,19 +19,20 @@ cc.Class({
           '第二关',
           '第三关',
         ];
-        this.levelLabel.string = levels[Global.currentLevel];
-        if(Global.currentLevel == 2){
+        this.levelLabel.string = levels[Global.enterLevel];
+        if(Global.enterLevel == 2){
             this.allPassLabel.active = true;
-            this.homeButton.node.x = 0;
-            this.nextButton.node.active = false;
+            // this.homeButton.node.x = 0;
+            // this.nextButton.node.active = false;
         }
     },
 
     nextButtonClicked() {
-        if(Global.currentLevel == 2) return;
-
-        Global.currentLevel++;
-        cc.director.loadScene('game');
+        if(Global.enterLevel == Global.currentLevel){
+            Global.currentLevel++;
+            if (Global.currentLevel > 2) Global.currentLevel = 2;
+        }
+        cc.director.loadScene('PlaneReady');
     },
 
     homeButtonClicked(){
