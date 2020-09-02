@@ -524,8 +524,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 107,
-      "height": 81
+      "width": 150,
+      "height": 120
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -555,7 +555,7 @@
       "__uuid__": "a43f1cac-f20b-42bd-a3bc-003c6f004e79"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -624,6 +624,15 @@
     },
     "backgroundPrefab": {
       "__uuid__": "134990fb-cc69-4e6d-b13f-906a34b6b186"
+    },
+    "plane": {
+      "__id__": 14
+    },
+    "player1": {
+      "__uuid__": "a43f1cac-f20b-42bd-a3bc-003c6f004e79"
+    },
+    "player2": {
+      "__uuid__": "2d03e5f8-b5a7-4a6d-a0a4-877323c23c1d"
     }
   }
 ]

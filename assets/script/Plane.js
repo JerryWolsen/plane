@@ -9,9 +9,25 @@ cc.Class({
         bullet: cc.Prefab,
         hpBar: cc.Prefab,
         bulletNum: 1,
+        player1: cc.SpriteFrame,
+        player2: cc.SpriteFrame,
     },
 
     onLoad: function () {
+
+        let plane;
+        switch (window.Player) {
+            case window.PLAYER_1:
+                plane = this.player1
+                break
+            case window.PLAYER_2:
+                plane = this.player2
+                break
+            default:
+                plane = this.player1
+        }
+
+        this.node.getComponent('cc.Sprite').spriteFrame = plane
 
         this.schedule(function(){
             this.fireBullet();

@@ -13,11 +13,6 @@ cc.Class({
             default: null,
             type: cc.Button
         },
-        //确定按钮
-        confirmBtn: {
-            default: null,
-            type: cc.Button
-        },
         //选择框
         selectWrapper: {
             default: null,
@@ -42,32 +37,27 @@ cc.Class({
             this.selectPlane(index)
             this.setSelectWrapper(index)
         })
-        //确定按钮点击事件监听
-        this.confirmBtn.node.on('click', this.onStart.bind(this))
         this.addBackground()
     },
 
     start() {
 
     },
-    //确认按钮点击事件
-    onStart() {
-        cc.director.loadScene('game')
-    },
     //设置选择框的位置
     setSelectWrapper(index) {
         switch (index) {
             case window.PLAYER_1:
-                this.selectWrapper.node.x = -60
+                this.selectWrapper.node.x = -100
                 break;
             case window.PLAYER_2:
-                this.selectWrapper.node.x = 60
+                this.selectWrapper.node.x = 100
                 break;
 
             default:
-                this.selectWrapper.node.x = -60
+                this.selectWrapper.node.x = -100
                 break;
         }
+        cc.director.loadScene('game')
     },
     selectPlane(index) {
         switch (index) {
