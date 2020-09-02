@@ -54,9 +54,7 @@ module.exports = cc.Class({
     },
 
     addBackground: function(){
-
         let background = cc.instantiate(this.backgroundPrefab);
-
         this.node.addChild(background);
         this.background = background;
 
@@ -231,13 +229,22 @@ module.exports = cc.Class({
         this.removeTouchListener();
         this.unschedule(this.spawnSmallEnemy);
         this.unschedule(this.spawnUfo);
-        this.startToMeetBoss = false;
+        // this.startToMeetBoss = false;
 
         this.ui.mask.node.active = true;
-        this.ui.mask.status.string = 'You Lose';
-        this.ui.mask.resumeBtn.node.active = false;
+        this.ui.mask.status.string = '本次得分：'+ this.score.toString();
         cc.audioEngine.stop(this.currentBgm);
         cc.director.pause();
+    },
+
+    fuhuo(){
+        this.spawnNewPlane();
+        this.addTouchListener();
+        this.hasWin = false;
+        if(!this.startToMeetBoss){
+            this.schedule(this.spawnSmallEnemy, 1.5);
+            this.schedule(this.spawnUfo, 10);
+        }
     },
 
     gotoWinResult: function(){

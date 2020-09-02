@@ -3,8 +3,6 @@ cc.Class({
 
     properties: {
         status: cc.Label,
-        quitBtn: cc.Button,
-        resumeBtn: cc.Button,
     },
 
     onLoad: function () {
@@ -13,7 +11,7 @@ cc.Class({
 
     // 添加touch事件
     addTouchListener: function(){
-        
+
         this.node.on(cc.Node.EventType.TOUCH_START, function(event){
             event.stopPropagation();
         });

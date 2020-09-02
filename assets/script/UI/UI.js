@@ -13,6 +13,26 @@ module.exports = cc.Class({
         boomLabel: cc.Label,
     }),
 
+    jifenButtonClicked(){
+        this.mask.node.active = false;
+        cc.audioEngine.resume(this.battle.currentBgm);
+        cc.director.resume();
+        this.battle.fuhuo();
+    },
+
+    shareButtonClicked(){
+        this.mask.node.active = false;
+        cc.audioEngine.resume(this.battle.currentBgm);
+        cc.director.resume();
+        this.battle.fuhuo();
+    },
+
+    quiteButtonClicked(){
+        cc.audioEngine.stop(this.battle.currentBgm);
+        cc.director.resume();
+        cc.director.loadScene('menu');
+    },
+
     pauseGame: function(){
 
         this.mask.node.active = true;
