@@ -47,8 +47,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 58,
-      "height": 88
+      "width": 119,
+      "height": 119
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -75,7 +75,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "ff1e34aa-ea36-4ae1-9a24-8d97948fd154"
+      "__uuid__": "26e47ce0-8a26-47df-99ff-329f28d00d3e"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -91,11 +91,22 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_atlas": {
-      "__uuid__": "ef9ec7ef-a27a-4038-bd22-d80cefea7e34"
+      "__uuid__": "a5c99ee5-1570-446d-a982-ab6718e7d5d7"
     }
   },
   {
-    "__type__": "cc.PolygonCollider",
+    "__type__": "ea7c2IFoA9HCKYQ7MOuisIP",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "speed": 200,
+    "ufoType": "ufoBullet"
+  },
+  {
+    "__type__": "cc.BoxCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -108,39 +119,11 @@
       "x": 0,
       "y": 0
     },
-    "points": [
-      {
-        "__type__": "cc.Vec2",
-        "x": -50,
-        "y": -50
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 50,
-        "y": -50
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 50,
-        "y": 50
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": -50,
-        "y": 50
-      }
-    ]
-  },
-  {
-    "__type__": "ea7c2IFoA9HCKYQ7MOuisIP",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "speed": 200,
-    "ufoType": "ufoBullet"
+    "_size": {
+      "__type__": "cc.Size",
+      "width": 119,
+      "height": 119
+    }
   },
   {
     "__type__": "cc.PrefabInfo",
