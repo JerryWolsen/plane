@@ -1,4 +1,4 @@
-import name from '../util/index'
+var name = require('index')
 var Global = require('Global');
 
 cc.Class({
