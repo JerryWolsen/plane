@@ -13,7 +13,8 @@ cc.Class({
         score: cc.Label,
         mask: cc.Node,
         purchaseDialog: cc.Prefab,
-        ranklistDialog: cc.Prefab
+        ranklistDialog: cc.Prefab,
+        diamondStr: cc.Label
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -48,6 +49,7 @@ cc.Class({
             this.mask.active = true
             this.mask.setLocalZOrder(1000);
         }
+        this.diamondStr.string = 'X ' + Global.diamond
     },
 
     initBoxArr(arr, startX, startY, material) {
@@ -88,6 +90,14 @@ cc.Class({
         dialog.y = 0;
         this.node.addChild(dialog);
         dialog.getComponent('RankList').setMyScore('120', 'Hackathon', Global.score)
+    },
+
+    onShareResultClicked() {
+        window.JSInterface && window.JSInterface.share();
+    },
+
+    onRedeemClicked() {
+        window.JSInterface && window.JSInterface.goPage();
     },
 
     update (dt) {
