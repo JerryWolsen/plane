@@ -33,6 +33,8 @@ cc.Class({
             }else if(this.ufoType == 'diamond'){
                 Global.diamond++;
                 this.game.updateDiamond();
+            }else if(this.ufoType == 'ufoShield'){
+                plane.showShield();
             }
             this.node.destroy();
         }

@@ -14,7 +14,7 @@ cc.Class({
         this.node.y -= this.speed * dt;
         this.node.x += this.dirX * dt;
 
-        if(this.node.y <= -this.node.parent.height / 2 
+        if(this.node.y <= -this.node.parent.height / 2
             || this.node.x >= this.node.parent.width / 2
             || this.node.x <= -this.node.parent.width / 2){
             this.node.destroy();
@@ -24,7 +24,11 @@ cc.Class({
 
     onCollisionEnter: function(other, self){
         let plane = other.getComponent('Plane');
-        plane.hp--;
+        if(plane.shield.active && plane.shieldHP > 0){
+            plane.shieldHP--;
+        }else{
+            plane.hp--;
+        }
         this.node.destroy();
     },
 });

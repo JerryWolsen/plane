@@ -39,7 +39,11 @@ cc.Class({
     onCollisionEnter: function(other, self){
         if(other.node.name == 'Plane'){
             let plane = other.getComponent('Plane');
-            plane.hp--;
+            if(plane.shield.active && plane.shieldHP > 0){
+                plane.shieldHP--;
+            }else{
+                plane.hp--;
+            }
         }
         this.hp--;
     },

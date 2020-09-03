@@ -16,6 +16,7 @@ module.exports = cc.Class({
         ufoBombPrefab: cc.Prefab,
         ufoDiamondPrefab: cc.Prefab,
         boomEffectPrefab: cc.Prefab,
+        shieldPrefab: cc.Prefab,
         battleBgm: cc.AudioClip,
         ui: require('UI'),
         useBombButton: cc.Button,
@@ -45,15 +46,23 @@ module.exports = cc.Class({
 
         this.spawnSmallEnemy();
 
-        this.schedule(this.spawnSmallEnemy, 1.5);
-
-        this.schedule(this.spawnUfo, 4);
+        this.startSchedule()
     },
 
     start(){
         this.currentLevel = Global.enterLevel;
         this.updateBoomNum();
         this.updateDiamond();
+    },
+
+    startSchedule(){
+        this.schedule(this.spawnSmallEnemy, 1.5);
+        this.schedule(this.spawnUfo, 6);
+    },
+
+    cancelSchedule(){
+        this.unschedule(this.spawnSmallEnemy);
+        this.unschedule(this.spawnUfo);
     },
 
     addBackground: function(){
@@ -114,12 +123,14 @@ module.exports = cc.Class({
         let self = this;
         let rand = cc.random0To1();
         let ufo;
-        if(rand <= 0.33){
+        if(rand <= 0.25){
             ufo = cc.instantiate(this.ufoBulletPrefab);
-        }else if(rand <= 0.66){
+        }else if(rand <= 0.5){
             ufo = cc.instantiate(this.ufoBombPrefab);
-        }else{
+        }else if(rand <= 0.75){
             ufo = cc.instantiate(this.ufoDiamondPrefab);
+        }else{
+            ufo = cc.instantiate(this.shieldPrefab);
         }
         let posX = Math.floor(cc.randomMinus1To1() * (self.node.width / 2 - ufo.width / 2));
         let posY = Math.floor(self.node.height / 2 + ufo.height / 2);
@@ -251,8 +262,7 @@ module.exports = cc.Class({
 
     gameOver: function(){
         this.removeTouchListener();
-        this.unschedule(this.spawnSmallEnemy);
-        this.unschedule(this.spawnUfo);
+        this.cancelSchedule();
         // this.startToMeetBoss = false;
 
         this.ui.mask.node.active = true;
@@ -267,16 +277,14 @@ module.exports = cc.Class({
         this.hasWin = false;
         cc.audioEngine.resume(this.currentBgm);
         if(!this.startToMeetBoss){
-            this.schedule(this.spawnSmallEnemy, 1.5);
-            this.schedule(this.spawnUfo, 10);
+            this.startSchedule();
         }
     },
 
     gotoWinResult: function(){
         Global.levels[Global.enterLevel+1] = true;
         this.removeTouchListener();
-        this.unschedule(this.spawnSmallEnemy);
-        this.unschedule(this.spawnUfo);
+        this.cancelSchedule();
         this.startToMeetBoss = false;
         cc.audioEngine.stop(this.currentBgm);
         Global.score = this.score
@@ -307,8 +315,7 @@ module.exports = cc.Class({
     update: function (dt) {
         if(!this.hasWin && !this.startToMeetBoss && this.score >= this.levels[this.currentLevel]){
             this.startToMeetBoss = true;
-            this.unschedule(this.spawnSmallEnemy);
-            this.unschedule(this.spawnUfo);
+            this.cancelSchedule();
             this.spawnNewEnemy();
         }
         if(!this.hasWin && this.startToMeetBoss && this.numberOfDestroyBoss == this.bosses[this.currentLevel]){

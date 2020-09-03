@@ -11,6 +11,8 @@ cc.Class({
         bulletNum: 1,
         player1: cc.SpriteFrame,
         player2: cc.SpriteFrame,
+        shield: cc.Node,
+        shieldHP: 0,
     },
 
     onLoad: function () {
@@ -42,6 +44,22 @@ cc.Class({
         hpComp.hp_remain = this.hp;
 
         this.hp_bar = hp_bar;
+
+        this.hideShield();
+    },
+
+    hideShield(){
+        this.shieldHP = 0;
+        this.shield.active = false;
+    },
+
+    showShield(){
+        this.shieldHP = 2;
+        this.shield.active = true;
+
+        this.scheduleOnce(()=>{
+            this.hideShield();
+        }, 6);
     },
 
     fireBullet: function(){
@@ -66,6 +84,7 @@ cc.Class({
                 this.node.x,
                 this.node.x + this.node.width/2 - diff,
             ];
+            posX = pos[i];
         }
         let posY = this.node.y + this.node.height/2 + 10;
         return cc.p(posX, posY);
@@ -73,6 +92,10 @@ cc.Class({
 
     update: function (dt) {
         this.node.getChildByName('hp').getComponent('HP').hp_remain = this.hp;
+
+        if(this.shieldHP <= 0){
+            this.hideShield();
+        }
 
         if(this.hp <= 0){
             this.node.destroy();
