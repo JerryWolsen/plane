@@ -3,7 +3,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-
+        desp: cc.Label,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -12,6 +12,10 @@ cc.Class({
 
     start () {
 
+    },
+
+    setDetail(despStr, image) {
+        this.desp.string = despStr
     },
 
     onGainPrizeClicked() {

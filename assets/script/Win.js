@@ -30,7 +30,7 @@ cc.Class({
           '第二关',
           '第三关',
         ];
-        this.levelLabel.string = levels[Global.currentLevel];
+        this.levelLabel.string = levels[Global.enterLevel];
         if(Global.enterLevel == 2){
             this.allPassLabel.active = true;
             // this.homeButton.node.x = 0;
@@ -38,7 +38,7 @@ cc.Class({
         }
 
         this.score.string = Global.score
-        this.woodBoxArr[Global.currentLevel].getComponent(cc.Animation).play('shake');
+        this.woodBoxArr[Global.enterLevel].getComponent(cc.Animation).play('shake');
     },
 
     initBoxArr(arr, startX, startY, material) {
@@ -48,6 +48,7 @@ cc.Class({
             box.y = startY - i * 231;
             this.bg.addChild(box);
             box.getComponent('Box').setMaterial(material)
+            box.getComponent('Box').setLevel(i)
             arr.push(box);
         }
     },

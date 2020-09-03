@@ -145,6 +145,9 @@
     ],
     "prizeDialog": {
       "__uuid__": "ae6c6118-094f-4522-94b3-b4675be3eb9f"
+    },
+    "purchaseDialog": {
+      "__uuid__": "2fa3147d-3986-4dfd-bc3b-fd6e1398d4a2"
     }
   },
   {

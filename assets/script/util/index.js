@@ -1,6 +1,11 @@
 window.PLAYER_1 = 'a'
 window.PLAYER_2 = 'b'
 window.Player = window.PLAYER_1
+var Global = require('Global');
+window.paySuccess = function () {
+    Global.vip = true;
+}
+
 //获取随机整数
 window.getRandomInt = function (start, end) {
     let p, randomSign = this.Math.random() > 0.5 ? -1 : 1

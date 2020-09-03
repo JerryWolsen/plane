@@ -22,6 +22,8 @@ module.exports = cc.Class({
     },
 
     shareButtonClicked(){
+        window.JSInterface && window.JSInterface.share();
+
         this.mask.node.active = false;
         cc.audioEngine.resume(this.battle.currentBgm);
         cc.director.resume();
