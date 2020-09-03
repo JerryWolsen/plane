@@ -55,10 +55,17 @@ cc.Class({
 
     setBulletPos: function(i){
         let posX = this.node.x;
+        let diff = 35;
         if(this.bulletNum == 2){
             let index = i==0 ? -1 : 1;
-            let offset = i==0 ? 35 : -35;
-            posX = this.node.x + this.node.width/2*index + offset;
+            let offset = i==0 ? 1 : -1;
+            posX = this.node.x + this.node.width/2*index + offset * diff;
+        }else if (this.bulletNum == 3){
+            let pos = [
+                this.node.x - this.node.width/2 + diff,
+                this.node.x,
+                this.node.x + this.node.width/2 - diff,
+            ];
         }
         let posY = this.node.y + this.node.height/2 + 10;
         return cc.p(posX, posY);

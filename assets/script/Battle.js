@@ -15,6 +15,7 @@ module.exports = cc.Class({
         ufoBulletPrefab: cc.Prefab,
         ufoBombPrefab: cc.Prefab,
         ufoDiamondPrefab: cc.Prefab,
+        boomEffectPrefab: cc.Prefab,
         battleBgm: cc.AudioClip,
         ui: require('UI'),
         useBombButton: cc.Button,
@@ -46,7 +47,7 @@ module.exports = cc.Class({
 
         this.schedule(this.spawnSmallEnemy, 1.5);
 
-        this.schedule(this.spawnUfo, 6);
+        this.schedule(this.spawnUfo, 4);
     },
 
     start(){
@@ -145,12 +146,12 @@ module.exports = cc.Class({
             let planeWidth = self.plane.width;
             let planeHeight = self.plane.height;
 
-            if(self.plane.x >= canvasWidth / 2 - planeWidth/2){
-                self.plane.x = canvasWidth / 2 - planeWidth/2;
+            if(self.plane.x >= canvasWidth / 2 - planeWidth/4){
+                self.plane.x = canvasWidth / 2 - planeWidth/4;
             }
 
-            if(self.plane.x <= -canvasWidth / 2 + planeWidth/2){
-                self.plane.x = -canvasWidth / 2 + planeWidth/2;
+            if(self.plane.x <= -canvasWidth / 2 + planeWidth/4){
+                self.plane.x = -canvasWidth / 2 + planeWidth/4;
             }
 
             // 血条多了30
@@ -225,17 +226,27 @@ module.exports = cc.Class({
             Global.boomNum = 0;
         }
         this.updateBoomNum();
-        //TODO: 添加大爆炸
-        let children = this.node.children;
-        let score = 0;
-        for(let i=0; i<children.length; i++){
-            if (children[i].name == 'smallEnemy'){
-                children[i].getComponent('SmallEnemy').hp--;
-            }else if(children[i].name == 'Enemy'){
-                let enemy = children[i].getComponent('Enemy');
-                enemy.hp = enemy.hp - 10;
-            }
+
+        let pos = [this.node.x - this.node.width/4, this.node.x + this.node.width/4];
+        for(let i=0; i<2; i++){
+          let effect = cc.instantiate(this.boomEffectPrefab);
+          this.node.addChild(effect);
+          effect.setPosition(pos[i], -this.node.height/2-effect.height/2);
+          let action = cc.moveTo(1, cc.p(pos[i], this.node.height/2+effect.height/2));
+          effect.runAction(action);
         }
+
+        this.scheduleOnce(()=>{
+            let children = this.node.children;
+            for(let i=0; i<children.length; i++){
+                if (children[i].name == 'smallEnemy'){
+                    children[i].getComponent('SmallEnemy').hp--;
+                }else if(children[i].name == 'Enemy'){
+                    let enemy = children[i].getComponent('Enemy');
+                    enemy.hp = enemy.hp - 10;
+                }
+            }
+        }, 0.5);
     },
 
     gameOver: function(){

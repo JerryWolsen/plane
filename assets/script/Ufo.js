@@ -25,7 +25,8 @@ cc.Class({
         if(other.node.name == 'Plane'){
             let plane = other.getComponent('Plane');
             if(this.ufoType == 'ufoBullet'){
-                plane.bulletNum = 2;
+                plane.bulletNum++;
+                if(plane.bulletNum > 3) plane.bulletNum = 3;
             }else if(this.ufoType == 'ufoBomb'){
                 Global.boomNum++;
                 this.game.updateBoomNum();
