@@ -34,9 +34,8 @@ cc.Class({
     setMaterial (material) {
         this.material = material
         let frame;
-        const level = Global.enterLevel
-        const status = Global.levelPrizeStatus[level]
-
+        const status = Global.levelPrizeStatus[this.level]
+        console.log(Global.levelPrizeStatus)
         switch (material) {
             case Global.Material.wood:
                 frame = this.woodFrame[status[0]];
@@ -48,6 +47,7 @@ cc.Class({
                 frame = this.goldFrame[status[2]];
                 break;
         }
+
         this.node.getComponent('cc.Sprite').spriteFrame = frame
     },
 
@@ -60,28 +60,37 @@ cc.Class({
             return
         }
 
+        let status = Global.levelPrizeStatus[level]
+
         // 银宝箱和金宝箱需要充值解锁
         if(!Global.vip && this.material !== Global.Material.wood) {
             this.showPurchaseDialog()
             return
         }
 
-        let status = Global.levelPrizeStatus[level]
 
+        let item;
         switch (this.material) {
             case Global.Material.wood:
                 frame = this.woodFrame[1];
-                status[0] = 1;
+                item = 0
                 break;
             case Global.Material.silver:
                 frame = this.silverFrame[1];
-                status[1] = 1;
+                item = 1
                 break;
             case Global.Material.gold:
                 frame = this.goldFrame[1];
-                status[2] = 1;
+                item = 2
                 break;
         }
+
+        if(status[item] === 1) {
+            return
+        }
+
+        status[item] = 1
+
         this.node.getComponent('cc.Sprite').spriteFrame = frame
         this.scheduleOnce(this.showPrizeDialog, 0.5)
     },
@@ -91,7 +100,7 @@ cc.Class({
         dialog.x = 0;
         dialog.y = 0;
         this.node.parent.addChild(dialog);
-
+        dialog.setLocalZOrder(1005)
         const level = Global.enterLevel
         let item;
         switch (this.material) {
@@ -114,6 +123,7 @@ cc.Class({
         dialog.x = 0;
         dialog.y = 0;
         this.node.parent.addChild(dialog);
+        dialog.setLocalZOrder(1005)
     }
 
     // update (dt) {},

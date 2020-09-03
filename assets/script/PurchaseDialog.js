@@ -1,3 +1,4 @@
+var Global = require('Global');
 
 cc.Class({
     extends: cc.Component,
@@ -20,6 +21,7 @@ cc.Class({
 
     onLoanClicked() {
         window.JSInterface && window.JSInterface.goPage();
+        Global.vip = true;
         this.node.destroy();
     },
 

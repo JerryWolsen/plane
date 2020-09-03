@@ -10,7 +10,9 @@ cc.Class({
         nextButton: cc.Button,
         boxPrefab: cc.Prefab,
         bg: cc.Node,
-        score: cc.Label
+        score: cc.Label,
+        mask: cc.Node,
+        purchaseDialog: cc.Prefab
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -19,9 +21,9 @@ cc.Class({
         this.silverArr = [];
         this.goldenArr = [];
         let startY = 309
-        this.initBoxArr(this.woodBoxArr, -243, startY, Global.Material.wood)
-        this.initBoxArr(this.silverArr, -8, startY, Global.Material.silver)
-        this.initBoxArr(this.goldenArr, 227, startY, Global.Material.gold)
+        this.initBoxArr(this.woodBoxArr, -253, startY, Global.Material.wood)
+        this.initBoxArr(this.silverArr, 2, startY, Global.Material.silver)
+        this.initBoxArr(this.goldenArr, 237, startY, Global.Material.gold)
     },
 
     start(){
@@ -39,6 +41,12 @@ cc.Class({
 
         this.score.string = Global.score
         this.woodBoxArr[Global.enterLevel].getComponent(cc.Animation).play('shake');
+        if(Global.vip) {
+            this.mask.active = false
+        } else {
+            this.mask.active = true
+            this.mask.setLocalZOrder(1000);
+        }
     },
 
     initBoxArr(arr, startX, startY, material) {
@@ -47,8 +55,9 @@ cc.Class({
             box.x = startX;
             box.y = startY - i * 231;
             this.bg.addChild(box);
-            box.getComponent('Box').setMaterial(material)
             box.getComponent('Box').setLevel(i)
+            box.getComponent('Box').setMaterial(material)
+            box.setLocalZOrder(100);
             arr.push(box);
         }
     },
@@ -61,9 +70,20 @@ cc.Class({
         cc.director.loadScene('PlaneReady');
     },
 
+    maskClicked() {
+        let dialog = cc.instantiate(this.purchaseDialog);
+        dialog.x = 0;
+        dialog.y = 0;
+        this.node.addChild(dialog);
+    },
+
     homeButtonClicked(){
         cc.director.loadScene('menu');
     },
 
-    // update (dt) {},
+    update (dt) {
+        if(Global.vip) {
+            this.mask.active = false
+        }
+    },
 });
