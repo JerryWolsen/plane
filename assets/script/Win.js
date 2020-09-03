@@ -12,7 +12,8 @@ cc.Class({
         bg: cc.Node,
         score: cc.Label,
         mask: cc.Node,
-        purchaseDialog: cc.Prefab
+        purchaseDialog: cc.Prefab,
+        ranklistDialog: cc.Prefab
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -32,14 +33,14 @@ cc.Class({
           '第二关',
           '第三关',
         ];
-        this.levelLabel.string = levels[Global.enterLevel];
+        this.levelLabel.string = '恭喜您通过：' +  levels[Global.enterLevel];
         if(Global.enterLevel == 2){
             this.allPassLabel.active = true;
             // this.homeButton.node.x = 0;
             // this.nextButton.node.active = false;
         }
 
-        this.score.string = Global.score
+        this.score.string = Global.score + '分'
         this.woodBoxArr[Global.enterLevel].getComponent(cc.Animation).play('shake');
         if(Global.vip) {
             this.mask.active = false
@@ -79,6 +80,14 @@ cc.Class({
 
     homeButtonClicked(){
         cc.director.loadScene('menu');
+    },
+
+    onRankClicked() {
+        let dialog = cc.instantiate(this.ranklistDialog);
+        dialog.x = 0;
+        dialog.y = 0;
+        this.node.addChild(dialog);
+        dialog.getComponent('RankList').setMyScore('120', 'Hackathon', Global.score)
     },
 
     update (dt) {
