@@ -29,6 +29,9 @@ cc.Class({
             }else if(this.ufoType == 'ufoBomb'){
                 Global.boomNum++;
                 this.game.updateBoomNum();
+            }else if(this.ufoType == 'diamond'){
+                Global.diamond++;
+                this.game.updateDiamond();
             }
             this.node.destroy();
         }

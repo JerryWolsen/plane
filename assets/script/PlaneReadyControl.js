@@ -94,8 +94,6 @@ cc.Class({
 
     nextButtonClicked(){
         cc.audioEngine.playEffect(this.buttonAudio, false);
-        console.log('selectedLevel: '+this.selectedLevel);
-        console.log('Global.levels: '+Global.levels[this.selectedLevel]);
         if(!Global.levels[this.selectedLevel]){
             return;
         }

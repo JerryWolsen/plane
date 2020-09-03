@@ -14,6 +14,7 @@ module.exports = cc.Class({
         smallEnemyPrefab: cc.Prefab,
         ufoBulletPrefab: cc.Prefab,
         ufoBombPrefab: cc.Prefab,
+        ufoDiamondPrefab: cc.Prefab,
         battleBgm: cc.AudioClip,
         ui: require('UI'),
         useBombButton: cc.Button,
@@ -45,13 +46,13 @@ module.exports = cc.Class({
 
         this.schedule(this.spawnSmallEnemy, 1.5);
 
-        this.schedule(this.spawnUfo, 10);
+        this.schedule(this.spawnUfo, 6);
     },
 
     start(){
         this.currentLevel = Global.enterLevel;
-        console.log('enterLevel: '+Global.enterLevel);
         this.updateBoomNum();
+        this.updateDiamond();
     },
 
     addBackground: function(){
@@ -111,7 +112,14 @@ module.exports = cc.Class({
     spawnUfo: function(){
         let self = this;
         let rand = cc.random0To1();
-        let ufo = rand <= 0.7 ? cc.instantiate(this.ufoBulletPrefab) : cc.instantiate(this.ufoBombPrefab);
+        let ufo;
+        if(rand <= 0.33){
+            ufo = cc.instantiate(this.ufoBulletPrefab);
+        }else if(rand <= 0.66){
+            ufo = cc.instantiate(this.ufoBombPrefab);
+        }else{
+            ufo = cc.instantiate(this.ufoDiamondPrefab);
+        }
         let posX = Math.floor(cc.randomMinus1To1() * (self.node.width / 2 - ufo.width / 2));
         let posY = Math.floor(self.node.height / 2 + ufo.height / 2);
         this.node.addChild(ufo);
@@ -196,8 +204,12 @@ module.exports = cc.Class({
         }
     },
 
+    updateDiamond(){
+        this.ui.diamondLabel.string = '' + Global.diamond.toString();
+    },
+
     updateBoomNum: function(){
-        this.ui.boomLabel.string = 'x ' + Global.boomNum.toString();
+        this.ui.boomLabel.string = '' + Global.boomNum.toString();
     },
 
     useUfoBomb: function(){

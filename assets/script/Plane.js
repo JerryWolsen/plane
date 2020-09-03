@@ -60,7 +60,7 @@ cc.Class({
             let offset = i==0 ? 35 : -35;
             posX = this.node.x + this.node.width/2*index + offset;
         }
-        let posY = this.node.y + 40;
+        let posY = this.node.y + this.node.height/2 + 10;
         return cc.p(posX, posY);
     },
 

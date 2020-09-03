@@ -11,5 +11,6 @@ module.exports = {
     boomNum: 0,
     score: 0,
     gameBg: 'huoShan',
-    Material
+    Material,
+    diamond: 0
 };
