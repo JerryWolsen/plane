@@ -34,7 +34,7 @@ module.exports = cc.Class({
 
         this.addBackground();
 
-        this.currentBgm = cc.audioEngine.playEffect(this.battleBgm, false, 0.5);
+        this.currentBgm = cc.audioEngine.playEffect(this.battleBgm, true, 0.5);
 
         this.spawnNewPlane();
         this.addTouchListener();

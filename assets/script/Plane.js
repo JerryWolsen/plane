@@ -36,7 +36,7 @@ cc.Class({
         let hp_bar = cc.instantiate(this.hpBar);
 
         this.node.addChild(hp_bar);
-        hp_bar.setPosition(0, 50);
+        hp_bar.setPosition(0, this.node.height/2+10);
         let hpComp = hp_bar.getComponent('HP');
         hpComp.hp = this.hp;
         hpComp.hp_remain = this.hp;

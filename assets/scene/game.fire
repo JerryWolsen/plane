@@ -1633,7 +1633,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "jifen",
+    "_name": "quite_button",
     "_objFlags": 0,
     "_parent": {
       "__id__": 36
@@ -1758,7 +1758,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "积分复活",
+    "_N$string": "结束游戏",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -1854,7 +1854,7 @@
       "__id__": 6
     },
     "component": "UI",
-    "handler": "jifenButtonClicked",
+    "handler": "quiteButtonClicked",
     "customEventData": ""
   },
   {
@@ -2096,7 +2096,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 58

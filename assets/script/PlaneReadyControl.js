@@ -5,6 +5,10 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
+        buttonAudio: {
+            default: null,
+            url: cc.AudioClip
+        },
         //player01
         plane1: {
             default: null,
@@ -30,12 +34,14 @@ cc.Class({
         this.selectedLevel = 0;
         //plane1监听
         this.plane1.node.on('click', (event) => {
+            cc.audioEngine.playEffect(this.buttonAudio, false);
             const index = window.PLAYER_1
             this.selectPlane(index)
             this.setSelectWrapper(index)
         })
         //plane2监听
         this.plane2.node.on('click', (event) => {
+            cc.audioEngine.playEffect(this.buttonAudio, false);
             const index = window.PLAYER_2
             this.selectPlane(index)
             this.setSelectWrapper(index)
@@ -81,10 +87,12 @@ cc.Class({
     },
 
     backButtonClicked(){
+        cc.audioEngine.playEffect(this.buttonAudio, false);
         cc.director.loadScene('menu')
     },
 
     nextButtonClicked(){
+        cc.audioEngine.playEffect(this.buttonAudio, false);
         if(!Global.levels[this.selectedLevel]){
             return;
         }
@@ -93,14 +101,17 @@ cc.Class({
     },
 
     start1ButtonClicked(){
+        cc.audioEngine.playEffect(this.buttonAudio, false);
         this.updateSelectedLevel(1);
     },
 
     start2ButtonClicked(){
+        cc.audioEngine.playEffect(this.buttonAudio, false);
         this.updateSelectedLevel(0);
     },
 
     start3ButtonClicked(){
+        cc.audioEngine.playEffect(this.buttonAudio, false);
         this.updateSelectedLevel(2);
     },
 
