@@ -27,6 +27,7 @@ cc.Class({
         innerCycles: [cc.Node],
         outerCycles: [cc.Node],
         locks: [cc.Node],
+        maskNode: cc.Node,
     },
 
     onLoad() {
@@ -95,10 +96,35 @@ cc.Class({
     nextButtonClicked(){
         cc.audioEngine.playEffect(this.buttonAudio, false);
         if(!Global.levels[this.selectedLevel]){
+            this.showNoLock();
             return;
         }
         Global.enterLevel = this.selectedLevel;
         cc.director.loadScene('game');
+    },
+
+    showNoLock(){
+        this.maskNode.active = true;
+        this.maskNode.on(cc.Node.EventType.TOUCH_START, function(event){
+            event.stopPropagation();
+        });
+
+        this.maskNode.on(cc.Node.EventType.TOUCH_MOVE, function(event){
+            event.stopPropagation();
+        });
+
+        this.maskNode.on(cc.Node.EventType.TOUCH_END, function(event){
+            event.stopPropagation();
+        });
+
+        this.maskNode.on(cc.Node.EventType.TOUCH_CANCEL, function(event){
+            event.stopPropagation();
+        });
+    },
+
+    hideNoLock(){
+        this.maskNode.active = false;
+        this.maskNode.removeEventListener();
     },
 
     start1ButtonClicked(){
