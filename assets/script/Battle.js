@@ -50,6 +50,7 @@ module.exports = cc.Class({
 
     start(){
         this.currentLevel = Global.enterLevel;
+        console.log('enterLevel: '+Global.enterLevel);
         this.updateBoomNum();
     },
 
@@ -249,6 +250,7 @@ module.exports = cc.Class({
     },
 
     gotoWinResult: function(){
+        Global.levels[Global.enterLevel+1] = true;
         this.removeTouchListener();
         this.unschedule(this.spawnSmallEnemy);
         this.unschedule(this.spawnUfo);

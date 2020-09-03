@@ -49,6 +49,7 @@ cc.Class({
     },
 
     start() {
+        this.selectedLevel = Global.currentLevel;
         for(let i=0; i<this.locks.length; i++){
             this.locks[i].active = (i>Global.currentLevel);
             this.innerCycles[i].active = (i==Global.currentLevel);
@@ -93,6 +94,8 @@ cc.Class({
 
     nextButtonClicked(){
         cc.audioEngine.playEffect(this.buttonAudio, false);
+        console.log('selectedLevel: '+this.selectedLevel);
+        console.log('Global.levels: '+Global.levels[this.selectedLevel]);
         if(!Global.levels[this.selectedLevel]){
             return;
         }

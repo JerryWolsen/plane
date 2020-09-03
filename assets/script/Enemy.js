@@ -1,4 +1,5 @@
 import { posix } from "path";
+var Global = require('Global');
 
 cc.Class({
     extends: cc.Component,
@@ -9,6 +10,10 @@ cc.Class({
         bullet: cc.Prefab,
         hpBar: cc.Prefab,
         score: 10,
+        bossNode: cc.Sprite,
+        boss1: cc.SpriteFrame,
+        boss2: cc.SpriteFrame,
+        boss3: cc.SpriteFrame,
     },
 
     onLoad: function () {
@@ -29,6 +34,20 @@ cc.Class({
         hpComp.hp_remain = this.hp;
 
         this.hpComp = hpComp;
+    },
+
+    start(){
+        switch (Global.enterLevel) {
+            case 0:
+                this.bossNode.spriteFrame = this.boss1;
+                break;
+            case 1:
+                this.bossNode.spriteFrame = this.boss2;
+                break;
+            case 2:
+                this.bossNode.spriteFrame = this.boss3;
+                break;
+        }
     },
 
     fireBullet: function(){
