@@ -129,20 +129,23 @@
     ],
     "silverFrame": [
       {
-        "__uuid__": "591299df-2792-44fd-a58e-75a3cb723903"
+        "__uuid__": "57fbeaa2-d594-4967-82bc-a52a03f4677a"
       },
       {
-        "__uuid__": "acd34a51-a979-4fdb-8ed1-b866ebf54bd6"
+        "__uuid__": "cbb2ad8e-6571-42cf-80de-7672731dfb7e"
       }
     ],
     "goldFrame": [
       {
-        "__uuid__": "831583e6-56f0-4fb8-8862-f7e7331e16dc"
+        "__uuid__": "201a8bca-6469-4c60-ac36-4d9a41d9601a"
       },
       {
-        "__uuid__": "ab635439-2941-4a70-9fdd-49a35e96a7e8"
+        "__uuid__": "40e11777-16bb-4edf-bb77-15c5c3726094"
       }
-    ]
+    ],
+    "prizeDialog": {
+      "__uuid__": "ae6c6118-094f-4522-94b3-b4675be3eb9f"
+    }
   },
   {
     "__type__": "cc.Button",

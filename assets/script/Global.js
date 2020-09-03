@@ -4,12 +4,6 @@ var Material = {
     gold: 'gold'
 }
 
-var levelPrizeStatus = [
-    [0,0,0],
-    [0,0,0],
-    [0,0,0],
-]
-
 module.exports = {
     currentLevel: 0,
     enterLevel: 0,
@@ -17,6 +11,5 @@ module.exports = {
     boomNum: 0,
     score: 0,
     gameBg: 'huoShan',
-    Material,
-    levelPrizeStatus
+    Material
 };
