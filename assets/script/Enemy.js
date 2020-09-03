@@ -33,9 +33,9 @@ cc.Class({
 
     fireBullet: function(){
 
-        for(let i = 0; i < 7; i++){
+        for(let i = 0; i < 5; i++){
             let newBullet = cc.instantiate(this.bullet);
-            newBullet.getComponent('EnemyBullet').dirX = 60 * (i - 3);
+            newBullet.getComponent('EnemyBullet').dirX = 100 * (i - 3);
 
             newBullet.setPosition(this.setBulletPos(i));
 

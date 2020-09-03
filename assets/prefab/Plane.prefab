@@ -101,7 +101,7 @@
     },
     "_enabled": true,
     "hp": 10,
-    "fireGap": 0.3,
+    "fireGap": 0.15,
     "bullet": {
       "__uuid__": "07529579-8904-4047-ab66-125883e74ada"
     },

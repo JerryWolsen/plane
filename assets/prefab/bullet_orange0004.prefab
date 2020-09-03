@@ -101,7 +101,7 @@
     },
     "_enabled": true,
     "speed": 260,
-    "dirX": 10
+    "dirX": 80
   },
   {
     "__type__": "cc.CircleCollider",

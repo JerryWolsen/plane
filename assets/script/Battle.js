@@ -233,7 +233,7 @@ module.exports = cc.Class({
 
         this.ui.mask.node.active = true;
         this.ui.mask.status.string = '本次得分：'+ this.score.toString();
-        cc.audioEngine.stop(this.currentBgm);
+        cc.audioEngine.pause(this.currentBgm);
         cc.director.pause();
     },
 
@@ -241,6 +241,7 @@ module.exports = cc.Class({
         this.spawnNewPlane();
         this.addTouchListener();
         this.hasWin = false;
+        cc.audioEngine.resume(this.currentBgm);
         if(!this.startToMeetBoss){
             this.schedule(this.spawnSmallEnemy, 1.5);
             this.schedule(this.spawnUfo, 10);
