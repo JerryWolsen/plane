@@ -253,7 +253,7 @@ module.exports = cc.Class({
         this.unschedule(this.spawnUfo);
         this.startToMeetBoss = false;
         cc.audioEngine.stop(this.currentBgm);
-
+        Global.score = this.score
         cc.director.loadScene('win');
     },
 

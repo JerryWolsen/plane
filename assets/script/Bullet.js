@@ -21,7 +21,7 @@ cc.Class({
     onCollisionEnter: function(other, self){
         if(other.node.name == 'Enemy'){
             let enemy = other.getComponent('Enemy');
-            enemy.hp--;
+            enemy.hp-=2;
         }else if(other.node.name == 'enemy_plane'){
             let enemy = other.getComponent('SmallEnemy');
             enemy.hp--;
