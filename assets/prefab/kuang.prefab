@@ -718,6 +718,18 @@
     "_enabled": true,
     "desp": {
       "__id__": 10
+    },
+    "img": {
+      "__id__": 6
+    },
+    "coupon": {
+      "__uuid__": "058d3ee0-fabe-4423-83a5-6424db9d4c25"
+    },
+    "weapon": {
+      "__uuid__": "26e47ce0-8a26-47df-99ff-329f28d00d3e"
+    },
+    "bomb": {
+      "__uuid__": "3b95761c-6ee4-4147-8aa0-225cf9837ee2"
     }
   },
   {

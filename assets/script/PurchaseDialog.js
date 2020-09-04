@@ -21,7 +21,7 @@ cc.Class({
 
     onLoanClicked() {
         window.JSInterface && window.JSInterface.goPage();
-        Global.vip = true;
+       // Global.vip = true;
         this.node.destroy();
     },
 

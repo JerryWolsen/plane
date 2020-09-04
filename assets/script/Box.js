@@ -15,10 +15,7 @@ cc.Class({
         goldFrame: [cc.SpriteFrame],
         prizeDialog: cc.Prefab,
         purchaseDialog: cc.Prefab,
-        prize: cc.Label,
-        coupon: cc.SpriteFrame,
-        weapon: cc.SpriteFrame,
-        bomb: cc.SpriteFrame
+        prize: cc.Label
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -127,7 +124,7 @@ cc.Class({
                 break;
         }
 
-        dialog.getComponent('Dialog').setDetail(prizes[level][item].description)
+        dialog.getComponent('Dialog').setDetail(prizes[level][item].description, item)
     },
 
     showPurchaseDialog() {
