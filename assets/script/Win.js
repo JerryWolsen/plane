@@ -16,6 +16,7 @@ cc.Class({
         ranklistDialog: cc.Prefab,
         diamondStr: cc.Label,
         nextLabel: cc.Label,
+        prizeDialog: cc.Prefab,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -107,8 +108,26 @@ cc.Class({
         window.JSInterface && window.JSInterface.goPage();
     },
 
-    onAttendClicked() {
+    onDailyClicked() {
+        if(!Global.allPass) {
+            return
+        }
+        let dialog = cc.instantiate(this.prizeDialog);
+        dialog.x = 0;
+        dialog.y = 0;
+        this.node.addChild(dialog);
+        dialog.getComponent('Dialog').setJiebi()
+    },
 
+    onMonthlyClicked() {
+        if(!Global.allPass) {
+            return
+        }
+        let dialog = cc.instantiate(this.prizeDialog);
+        dialog.x = 0;
+        dialog.y = 0;
+        this.node.addChild(dialog);
+        dialog.getComponent('Dialog').setCash()
     },
 
     update (dt) {

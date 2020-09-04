@@ -98,6 +98,17 @@ cc.Class({
             return
         }
 
+        if(this.material === Global.Material.wood) {
+            if(this.level === 0) {
+                Global.boomNum += 2
+            } else if(this.level === 1) {
+                Global.shield ++;
+            } else if(this.level === 2) {
+                Global.shield++;
+                Global.boomNum++;
+            }
+        }
+
         status[item] = 1
 
         this.node.getComponent('cc.Sprite').spriteFrame = frame

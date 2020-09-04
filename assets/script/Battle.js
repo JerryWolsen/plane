@@ -347,7 +347,7 @@ module.exports = cc.Class({
             this.startToMeetBoss = false;
             cc.audioEngine.stop(this.currentBgm);
             cc.director.loadScene('win');
-        }, 0.8);
+        }, 0.5);
     },
 
     fireBoom: function(posX, posY){
