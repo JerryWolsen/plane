@@ -20,8 +20,8 @@ cc.Class({
         this.scheduleOnce(()=>{
             let posX = Math.floor(cc.randomMinus1To1() * (this.game.node.width / 2 - this.node.width / 2));
             let posY = -this.game.node.height/2 - this.node.height/2 - 50;
-            let duration = this.rand * 6;
-            duration<=3 && (duration=3);
+            let duration = this.rand * 4;
+            duration<=2 && (duration=2);
             let action = cc.moveTo(duration, cc.p(posX, posY));
             this.node.runAction(action);
         }, 0.2)

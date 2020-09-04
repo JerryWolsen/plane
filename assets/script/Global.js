@@ -21,5 +21,6 @@ module.exports = {
     diamond: 0,
     vip: false,
     levelPrizeStatus,
-    shield: 0
+    shield: 0,
+    allPass: false
 };

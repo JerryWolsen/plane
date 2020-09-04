@@ -319,6 +319,9 @@ module.exports = cc.Class({
         this.removeTouchListener();
         this.cancelSchedule();
         Global.score = this.score;
+        if(Global.enterLevel == 2){
+            Global.allPass = true;
+        }
         this.scheduleOnce(()=>{
             this.startToMeetBoss = false;
             cc.audioEngine.stop(this.currentBgm);
@@ -348,14 +351,16 @@ module.exports = cc.Class({
     },
 
     update: function (dt) {
-        if(!this.hasWin && !this.startToMeetBoss && this.score >= this.levels[this.currentLevel]){
-            this.startToMeetBoss = true;
-            this.cancelSchedule();
-            this.spawnNewEnemy();
-        }
-        if(!this.hasWin && this.startToMeetBoss && this.numberOfDestroyBoss == this.bosses[this.currentLevel]){
-            this.hasWin = true;
-            this.gotoWinResult();
+        if(!Global.allPass){
+            if(!this.hasWin && !this.startToMeetBoss && this.score >= this.levels[this.currentLevel]){
+                this.startToMeetBoss = true;
+                this.cancelSchedule();
+                this.spawnNewEnemy();
+            }
+            if(!this.hasWin && this.startToMeetBoss && this.numberOfDestroyBoss == this.bosses[this.currentLevel]){
+                this.hasWin = true;
+                this.gotoWinResult();
+            }
         }
     },
 });

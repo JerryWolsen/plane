@@ -69,6 +69,11 @@ cc.Class({
     },
 
     nextButtonClicked() {
+        if(Global.allPass){
+            Global.enterLevel = 2;
+            cc.director.loadScene('game');
+            return;
+        }
         if(Global.enterLevel == Global.currentLevel){
             Global.currentLevel++;
             if (Global.currentLevel > 2) Global.currentLevel = 2;
