@@ -14,7 +14,8 @@ cc.Class({
         mask: cc.Node,
         purchaseDialog: cc.Prefab,
         ranklistDialog: cc.Prefab,
-        diamondStr: cc.Label
+        diamondStr: cc.Label,
+        nextLabel: cc.Label,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -35,10 +36,8 @@ cc.Class({
           '第三关',
         ];
         this.levelLabel.string = '恭喜您,通过' +  levels[Global.enterLevel];
-        if(Global.enterLevel == 2){
-            //  this.allPassLabel.active = true;
-            // this.homeButton.node.x = 0;
-            // this.nextButton.node.active = false;
+        if(Global.allPass){
+             this.allPassLabel.active = true;
         }
 
         this.score.string = '分数：' + Global.score
