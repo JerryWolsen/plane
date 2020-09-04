@@ -1,9 +1,9 @@
 var Global = require('Global');
 
 var prizes = [
-    [{description: '炸弹', image: ''},{description: '护盾', image: ''},{description: '10元代金券', image: ''} ],
-    [{description: '激光炮', image: ''},{description: '僚机', image: ''},{description: '20元代金券', image: ''} ],
-    [{description: '血包', image: ''},{description: '10捷币', image: ''},{description: '50元代金券', image: ''} ],
+    [{description: '炸弹x2', image: ''},{description: '加农炮', image: ''},{description: 'MKP30元代金券', image: ''} ],
+    [{description: '保护罩x1', image: ''},{description: '激光炮', image: ''},{description: '商品贷1期免息券', image: ''} ],
+    [{description: '炸弹x1,保护罩x1', image: ''},{description: '镭射炮', image: ''},{description: '捷信会员特权', image: ''} ],
 ]
 
 cc.Class({
@@ -14,7 +14,11 @@ cc.Class({
         silverFrame: [cc.SpriteFrame],
         goldFrame: [cc.SpriteFrame],
         prizeDialog: cc.Prefab,
-        purchaseDialog: cc.Prefab
+        purchaseDialog: cc.Prefab,
+        prize: cc.Label,
+        coupon: cc.SpriteFrame,
+        weapon: cc.SpriteFrame,
+        bomb: cc.SpriteFrame
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -31,23 +35,31 @@ cc.Class({
         this.level = level
     },
 
+    setPrize(prize) {
+        this.prize.string = prize
+    },
+
     setMaterial (material) {
         this.material = material
         let frame;
+        let prize;
         const status = Global.levelPrizeStatus[this.level]
         console.log(Global.levelPrizeStatus)
         switch (material) {
             case Global.Material.wood:
                 frame = this.woodFrame[status[0]];
+                prize = prizes[this.level][0].description
                 break;
             case Global.Material.silver:
                 frame = this.silverFrame[status[1]];
+                prize = prizes[this.level][1].description
                 break;
             case Global.Material.gold:
                 frame = this.goldFrame[status[2]];
+                prize = prizes[this.level][2].description
                 break;
         }
-
+        this.setPrize(prize)
         this.node.getComponent('cc.Sprite').spriteFrame = frame
     },
 

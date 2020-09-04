@@ -34,15 +34,18 @@ cc.Class({
           '第二关',
           '第三关',
         ];
-        this.levelLabel.string = '恭喜您通过：' +  levels[Global.enterLevel];
+        this.levelLabel.string = '恭喜您,通过' +  levels[Global.enterLevel];
         if(Global.enterLevel == 2){
-            this.allPassLabel.active = true;
+            //  this.allPassLabel.active = true;
             // this.homeButton.node.x = 0;
             // this.nextButton.node.active = false;
         }
 
-        this.score.string = Global.score + '分'
-        this.woodBoxArr[Global.enterLevel].getComponent(cc.Animation).play('shake');
+        this.score.string = '分数：' + Global.score
+        if(!Global.levelPrizeStatus[Global.enterLevel][0]) {
+            this.woodBoxArr[Global.enterLevel].getComponent(cc.Animation).play('shake');
+        }
+
         if(Global.vip) {
             this.mask.active = false
         } else {
@@ -98,6 +101,10 @@ cc.Class({
 
     onRedeemClicked() {
         window.JSInterface && window.JSInterface.goPage();
+    },
+
+    onAttendClicked() {
+
     },
 
     update (dt) {

@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "b1324d38-eebd-4519-88d3-220f4603bc2a",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "canyu1_03": {
+      "ver": "1.0.3",
+      "uuid": "51960056-766f-44a7-82fa-c02fb1fc6647",
+      "rawTextureUuid": "b1324d38-eebd-4519-88d3-220f4603bc2a",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 182,
+      "height": 53,
+      "rawWidth": 182,
+      "rawHeight": 53,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
