@@ -63,13 +63,13 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 107
-      },
-      {
         "__id__": 108
       },
       {
         "__id__": 109
+      },
+      {
+        "__id__": 110
       }
     ],
     "_prefab": null,
@@ -200,10 +200,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 105
+        "__id__": 106
       },
       {
-        "__id__": 106
+        "__id__": 107
       }
     ],
     "_prefab": null,
@@ -2486,7 +2486,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 192,
-      "y": -619
+      "y": -627.5
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -2682,7 +2682,7 @@
     "_enabled": true,
     "isAlignOnce": true,
     "_target": null,
-    "_alignFlags": 18,
+    "_alignFlags": 4,
     "_left": 0,
     "_right": 0,
     "_top": 0,
@@ -2751,7 +2751,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": -187,
-      "y": -620
+      "y": -629
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -2947,7 +2947,7 @@
     "_enabled": true,
     "isAlignOnce": true,
     "_target": null,
-    "_alignFlags": 18,
+    "_alignFlags": 4,
     "_left": 0,
     "_right": 0,
     "_top": 0,
@@ -4044,6 +4044,9 @@
     "_components": [
       {
         "__id__": 104
+      },
+      {
+        "__id__": 105
       }
     ],
     "_prefab": null,
@@ -4074,7 +4077,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -618
+      "y": -623
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -4108,6 +4111,32 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_atlas": null
+  },
+  {
+    "__type__": "cc.Widget",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 103
+    },
+    "_enabled": true,
+    "isAlignOnce": true,
+    "_target": null,
+    "_alignFlags": 4,
+    "_left": 0,
+    "_right": 0,
+    "_top": 0,
+    "_bottom": 0,
+    "_verticalCenter": 0,
+    "_horizontalCenter": 0,
+    "_isAbsLeft": true,
+    "_isAbsRight": true,
+    "_isAbsTop": true,
+    "_isAbsBottom": true,
+    "_isAbsHorizontalCenter": true,
+    "_isAbsVerticalCenter": true,
+    "_originalWidth": 0,
+    "_originalHeight": 0
   },
   {
     "__type__": "cc.Sprite",
