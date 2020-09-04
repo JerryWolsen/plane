@@ -53,6 +53,7 @@ module.exports = cc.Class({
         this.currentLevel = Global.enterLevel;
         this.updateBoomNum();
         this.updateDiamond();
+        this.updateShield();
     },
 
     startSchedule(){
@@ -234,6 +235,10 @@ module.exports = cc.Class({
         this.ui.diamondLabel.string = '' + Global.diamond.toString();
     },
 
+    updateShield(){
+        this.ui.shieldLabel.string = '' + Global.shield.toString();
+    },
+
     updateBoomNum: function(){
         this.ui.boomLabel.string = '' + Global.boomNum.toString();
     },
@@ -272,6 +277,18 @@ module.exports = cc.Class({
                 }
             }
         }, 0.5);
+    },
+
+    useShield: function(){
+        if(Global.shield <= 0){
+            return;
+        }
+        Global.shield--;
+        if(Global.shield <= 0){
+            Global.shield = 0;
+        }
+        this.updateShield();
+        this.plane.getComponent('Plane').showShield();
     },
 
     gameOver: function(){

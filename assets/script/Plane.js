@@ -58,7 +58,7 @@ cc.Class({
     },
 
     showShield(){
-        this.shieldHP = 2;
+        this.shieldHP = 5;
         this.shield.active = true;
 
         this.scheduleOnce(()=>{

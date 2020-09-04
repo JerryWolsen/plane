@@ -34,7 +34,8 @@ cc.Class({
                 Global.diamond++;
                 this.game.updateDiamond();
             }else if(this.ufoType == 'ufoShield'){
-                plane.showShield();
+                Global.shield++;
+                this.game.updateShield();
             }
             this.node.destroy();
         }

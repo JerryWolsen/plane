@@ -20,5 +20,6 @@ module.exports = {
     Material,
     diamond: 0,
     vip: false,
-    levelPrizeStatus
+    levelPrizeStatus,
+    shield: 0
 };

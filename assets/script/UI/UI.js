@@ -12,6 +12,7 @@ module.exports = cc.Class({
         mask: require('Mask'),
         boomLabel: cc.Label,
         diamondLabel: cc.Label,
+        shieldLabel: cc.Label,
     }),
 
     jifenButtonClicked(){
