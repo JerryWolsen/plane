@@ -107,16 +107,30 @@ module.exports = cc.Class({
     },
 
     spawnSmallEnemy: function(){
-        let count = Math.floor(cc.random0To1() * 10) + 1;
-        for(let i=0; i<count; i++){
-            let self = this;
-            let enemy = cc.instantiate(this.smallEnemyPrefab);
-            let posX = Math.floor(cc.randomMinus1To1() * (self.node.width / 2 - enemy.width / 2));
-            let posY = Math.floor(cc.randomMinus1To1() * enemy.height / 2 + self.node.height / 2 + enemy.height / 2);
-            this.node.addChild(enemy);
-            enemy.setPosition(cc.p(posX, posY));
-            enemy.getComponent('SmallEnemy').game = this;
+        let self = this;
+        let tmp = cc.instantiate(this.smallEnemyPrefab);
+        let all = Math.floor(self.node.width / tmp.width);
+        for(let i=0; i<2*all; i++){
+            let rand = cc.random0To1();
+            if(rand <= 0.4){
+                let enemy = cc.instantiate(this.smallEnemyPrefab);
+                let posX = -self.node.width/2 + tmp.width/2 * i;
+                let posY = Math.floor(cc.randomMinus1To1() * enemy.height / 2 + self.node.height / 2 + enemy.height / 2);
+                this.node.addChild(enemy);
+                enemy.setPosition(cc.p(posX, posY));
+                enemy.getComponent('SmallEnemy').game = this;
+            }
         }
+
+        // let count = Math.floor(cc.random0To1() * all) + 1;
+        // for(let i=0; i<count; i++){
+        //     let enemy = cc.instantiate(this.smallEnemyPrefab);
+        //     let posX = Math.floor(cc.randomMinus1To1() * (self.node.width / 2 - enemy.width / 2));
+        //     let posY = Math.floor(cc.randomMinus1To1() * enemy.height / 2 + self.node.height / 2 + enemy.height / 2);
+        //     this.node.addChild(enemy);
+        //     enemy.setPosition(cc.p(posX, posY));
+        //     enemy.getComponent('SmallEnemy').game = this;
+        // }
     },
 
     spawnUfo: function(){
@@ -265,10 +279,12 @@ module.exports = cc.Class({
         this.cancelSchedule();
         // this.startToMeetBoss = false;
 
-        this.ui.mask.node.active = true;
-        this.ui.mask.status.string = '本次得分：'+ this.score.toString();
-        cc.audioEngine.pause(this.currentBgm);
-        cc.director.pause();
+        this.scheduleOnce(()=>{
+            this.ui.mask.node.active = true;
+            this.ui.mask.status.string = '本次得分：'+ this.score.toString();
+            cc.audioEngine.pause(this.currentBgm);
+            cc.director.pause();
+        }, 1);
     },
 
     fuhuo(){
@@ -285,10 +301,12 @@ module.exports = cc.Class({
         Global.levels[Global.enterLevel+1] = true;
         this.removeTouchListener();
         this.cancelSchedule();
-        this.startToMeetBoss = false;
-        cc.audioEngine.stop(this.currentBgm);
-        Global.score = this.score
-        cc.director.loadScene('win');
+        Global.score = this.score;
+        this.scheduleOnce(()=>{
+            this.startToMeetBoss = false;
+            cc.audioEngine.stop(this.currentBgm);
+            cc.director.loadScene('win');
+        }, 1);
     },
 
     fireBoom: function(posX, posY){

@@ -98,9 +98,9 @@ cc.Class({
         }
 
         if(this.hp <= 0){
-            this.node.destroy();
-
+            this.game.fireBoom(this.node.x, this.node.y);
             this.game.gameOver();
+            this.node.destroy();
         }
     },
 

@@ -17,14 +17,18 @@ cc.Class({
         this.rand = cc.random0To1() <= 0.5 ? 0 : 1;
         this.planeNode.spriteFrame = this.rand==0 ? this.plane1 : this.plane2;
 
-        let posX = Math.floor(cc.randomMinus1To1() * (this.node.parent.width / 2 - this.node.width / 2));
-        let posY = -this.node.parent.height/2 - this.node.height/2 - 50;
-        let action = cc.moveTo(10, cc.p(posX, posY)).easing(cc.easeCubicActionOut());
-        this.node.runAction(action);
+        this.scheduleOnce(()=>{
+            let posX = Math.floor(cc.randomMinus1To1() * (this.game.node.width / 2 - this.node.width / 2));
+            let posY = -this.game.node.height/2 - this.node.height/2 - 50;
+            let duration = this.rand * 8;
+            duration<=3 && (duration=3);
+            let action = cc.moveTo(duration, cc.p(posX, posY));
+            this.node.runAction(action);
+        }, 0.2)
     },
 
     update (dt) {
-        this.node.y -= this.speed * dt;
+        // this.node.y -= this.speed * dt;
 
         if(this.node.y <= -this.node.parent.height / 2 - this.node.height/2 || this.hp <= 0){
             if(this.hp <= 0){
