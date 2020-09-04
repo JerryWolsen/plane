@@ -46,8 +46,6 @@ module.exports = cc.Class({
         this.spawnNewPlane();
         this.addTouchListener();
 
-        // this.spawnNewEnemy();
-
         this.spawnSmallEnemy();
 
         this.startSchedule()
@@ -76,6 +74,7 @@ module.exports = cc.Class({
         this.updateBoomNum();
         this.updateDiamond();
         this.updateShield();
+        Global.allPass && this.spawnNewEnemy();
     },
 
     startSchedule(){
