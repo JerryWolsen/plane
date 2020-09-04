@@ -5,6 +5,7 @@ module.exports = cc.Class({
 
     // lambda表达式 解决循环引用
     properties: () => ({
+        secretNode: cc.Node,
         planePrefab: cc.Prefab,
         enemyPrefab: cc.Prefab,
         boomPrefab: cc.Prefab,
@@ -25,6 +26,9 @@ module.exports = cc.Class({
     }),
 
     onLoad: function () {
+        this.secretClickNum = 0;
+        this.lastDateClickSecret = new Date();
+
         this.hasWin = false;
         this.startToMeetBoss = false;
         this.numberOfDestroyBoss = 0;
@@ -47,6 +51,24 @@ module.exports = cc.Class({
         this.spawnSmallEnemy();
 
         this.startSchedule()
+
+        this.addSecretAction();
+    },
+
+    addSecretAction(){
+        this.secretNode.on('click', (event)=>{
+            let now = new Date();
+            if(now.getTime() - this.lastDateClickSecret.getTime() >= 1000){
+                this.secretClickNum = 1;
+            }else{
+                this.secretClickNum++;
+            }
+            console.log('secretClickNum: '+this.secretClickNum)
+            if(this.secretClickNum >= 3){
+                this.gotoWinResult();
+            }
+            this.lastDateClickSecret = now;
+        });
     },
 
     start(){
@@ -326,7 +348,7 @@ module.exports = cc.Class({
             this.startToMeetBoss = false;
             cc.audioEngine.stop(this.currentBgm);
             cc.director.loadScene('win');
-        }, 1);
+        }, 0.8);
     },
 
     fireBoom: function(posX, posY){
