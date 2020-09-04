@@ -48,6 +48,10 @@ cc.Class({
         this.hideShield();
     },
 
+    start(){
+        this.bulletNum = Global.currentLevel + 1;
+    },
+
     hideShield(){
         this.shieldHP = 0;
         this.shield.active = false;

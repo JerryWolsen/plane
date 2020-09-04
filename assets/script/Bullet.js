@@ -1,13 +1,32 @@
+var Global = require('Global');
+
 cc.Class({
     extends: cc.Component,
 
     properties: {
-
         speed: 0,
+        bullet: cc.Sprite,
+        bullet1: cc.SpriteFrame,
+        bullet2: cc.SpriteFrame,
+        bullet3: cc.SpriteFrame,
     },
 
     onLoad: function () {
 
+    },
+
+    start(){
+        switch (Global.currentLevel) {
+            case 0:
+                this.bullet.spriteFrame = this.bullet1;
+                break;
+            case 1:
+                this.bullet.spriteFrame = this.bullet2;
+                break;
+            case 2:
+                this.bullet.spriteFrame = this.bullet3;
+                break;
+        }
     },
 
     update: function (dt) {

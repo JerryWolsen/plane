@@ -100,7 +100,19 @@
       "__id__": 1
     },
     "_enabled": true,
-    "speed": 600
+    "speed": 600,
+    "bullet": {
+      "__id__": 2
+    },
+    "bullet1": {
+      "__uuid__": "fd0dc1e6-58f7-4447-a741-7b0347c52c3a"
+    },
+    "bullet2": {
+      "__uuid__": "d0bb4c48-28f4-42dc-b151-72e3ed39c976"
+    },
+    "bullet3": {
+      "__uuid__": "3ef284a2-ca11-4fb9-850e-191d0ecfa6b4"
+    }
   },
   {
     "__type__": "cc.BoxCollider",
